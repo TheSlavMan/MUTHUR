@@ -1,0 +1,71 @@
+# # Scotland precursor hints — short dig that hands off to funding/dispatch
+# muthur_scotland_digsite = {
+  # desc = "MUTHUR_scotland_site_desc"
+  # picture = GFX_evt_overgrown_city
+  # stages = 2
+  # max_instances = 1
+  # allow = {
+    # is_ship_class = shipclass_science_ship
+		# exists = leader
+	# }
+
+  # visible = {
+    # default_site_visible_trigger = yes
+  # }
+
+  # stage = {
+    # difficulty = 1
+    # icon = GFX_archaeology_runes_A1
+    # event = MUTHUR.110   # wrapper: fires flavor ping, then forwards
+  # }
+  # stage = {
+    # difficulty = 1
+    # icon = GFX_archaeology_runes_A2
+    # event = MUTHUR.111   # wrapper: forwards to funding/dispatch (MUTHUR.101)
+  # }
+
+  # on_roll_failed = {
+    # from = { standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = all_random_events } }
+  # }
+# }
+
+# # LV-223 expedition — winner-exclusive dig
+# muthur_lv223_digsite = {
+  # desc = "MUTHUR_lv223_site_desc"
+  # picture = GFX_evt_warm_barren
+  # stages = 3
+  # max_instances = 1
+  # weight = 0
+
+  # allow = {
+    # is_ship_class = shipclass_science_ship
+    # exists = leader
+		# leader = { leader_class = scientist }
+    # hidden_trigger = { owner = { has_country_flag = MUTHUR_lv223_winner } }
+  # }
+
+  # visible = {
+    # has_country_flag = MUTHUR_lv223_winner
+    # default_site_visible_trigger = yes
+  # }
+
+  # stage = {
+    # difficulty = 3
+    # icon = GFX_archaeology_runes_B1
+    # event = MUTHUR.120   # wrapper: Hollow Structures flavor
+  # }
+  # stage = {
+    # difficulty = 4
+    # icon = GFX_archaeology_runes_B2
+    # event = MUTHUR.121   # wrapper: Urns of Black Fluid flavor
+  # }
+  # stage = {
+    # difficulty = 5
+    # icon = GFX_archaeology_runes_B3
+    # event = MUTHUR.122   # wrapper: forwards to finale (MUTHUR.105)
+  # }
+
+  # on_roll_failed = {
+    # from = { standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = all_random_events } }
+  # }
+# }

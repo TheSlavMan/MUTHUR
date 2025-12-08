@@ -1,0 +1,99 @@
+MUTHUR_yutani_home_planet_setup = {
+	optimize_memory
+	log = "MUTHUR: MUTHUR_yutani_home_planet_setup"
+	set_planet_flag = habitat_level_2
+	set_timed_planet_flag = {
+		flag = ignore_ai_building_limitations
+		days = 1
+	}
+	owner = {
+		save_event_target_as = yutani_owner
+		give_technology = {
+			tech = tech_habitat_1
+			message = no
+		}
+		add_research_option = tech_habitat_2
+	}
+	solar_system = {
+		random_system_planet = {
+			limit = { has_planet_flag = MUTHUR_yutani_habitat_planet }
+			save_event_target_as = MUTHUR_yutani_habitat_planet
+			solar_system = {
+				spawn_orbital_effect = {
+					TYPE = major
+					HABITAT_OWNER = event_target:yutani_owner
+					TARGET_PLANET = event_target:MUTHUR_yutani_habitat_planet
+				}
+			}
+		}
+	}
+	event_target:MUTHUR_yutani_habitat_planet = {
+		set_planet_flag = habitat@PREV
+	}
+	random_country = {
+		limit = { has_country_flag = MUTHUR_empire_weyland }
+		log = "MUTHUR: Found weyland empire for species selection"
+		owner_main_species = {
+			save_global_event_target_as = MUTHUR_main_species
+			log = "MUTHUR: Saved weyland species"
+		}
+	}
+	if = {
+		limit = { NOT = { exists = event_target:MUTHUR_main_species } }
+		log = "MUTHUR: MUTHUR_main_species not found for yutani home planet setup"
+	}
+	every_owned_pop_group = {
+		change_species = event_target:MUTHUR_main_species
+	}
+
+	set_planet_entity = {
+		entity = "habitat_phase_03_entity"
+		graphical_culture = owner
+	}
+
+	inline_script = "game_start/rural_districts_initializer"
+
+	add_district_and_planet_size_if_needed_effect_amount = {
+		amount = 2
+		district = district_hab_housing
+	}
+	add_zone = {
+		district = district_hab_housing
+		zone = zone_foundry
+		zone_slot = 2
+	}
+
+	add_district_and_planet_size_if_needed_effect_amount = {
+		amount = 1
+		district = district_hab_science
+	}
+
+	add_zone = {
+		district = district_hab_housing
+		zone = zone_habitat_research_unity
+		zone_slot = 1
+	}
+
+	# Shipsets
+	inline_script = "game_start/shipsets"
+
+	## Ethic
+	inline_script = "game_start/ethic_spiritualist"
+	inline_script = "game_start/ethic_materialist"
+	inline_script = "game_start/ethic_pacifist"
+	inline_script = "game_start/ethic_militarist"
+	inline_script = "game_start/ethic_egalitarian"
+	inline_script = "game_start/ethic_authoritarian"
+	inline_script = "game_start/ethic_xenophile"
+	inline_script = "game_start/ethic_xenophobe"
+
+	##Civics
+	inline_script = "game_start/civics"
+
+	# Apply rural districts depending on variable count
+	inline_script = "game_start/rural_districts_placement"
+
+	set_planet_size = 6
+
+	give_starting_resources_effect = yes
+}

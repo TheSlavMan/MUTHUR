@@ -1,0 +1,3 @@
+# MUTHUR_chain_lv223 = {
+    # icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
+# }

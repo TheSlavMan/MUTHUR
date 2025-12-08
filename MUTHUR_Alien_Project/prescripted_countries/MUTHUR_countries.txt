@@ -1,0 +1,68 @@
+MUTHUR_humans_weyland = {
+	name = "Weyland Corporation"
+	adjective = "Weyland"
+	spawn_enabled = no
+	ignore_portrait_duplication = yes
+
+	playable = has_megacorp
+
+	ship_prefix = "USCSS"
+
+	species = {
+		class = "HUM"
+		portrait = "human"
+		name = "Human"
+		plural = "Humans"
+		adjective = "Human"
+		name_list = "HUMAN2"
+		trait = "trait_adaptive"
+	}
+
+	room = "personality_peaceful_traders_room"
+
+	ethic = ethic_authoritarian
+	ethic = ethic_xenophile
+	ethic = ethic_materialist
+	authority = "auth_corporate"
+	government = "gov_megacorporation"
+	civics = { "civic_brand_loyalty" "civic_private_prospectors" }
+	origin = "origin_default"
+
+	flag = MUTHUR_weyland_flags
+
+	planet_name = "Earth"
+	planet_class = "pc_continental"
+	initializer = "MUTHUR_earth_system_initializer"
+	system_name = "Sol"
+
+	graphical_culture = "humanoid_01"
+	city_graphical_culture = "humanoid_01"
+
+	empire_flag = {
+		icon= {
+			category = "corporate"
+			file = "corporate_weyland.dds"
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"yellow"
+			"black"
+			"null"
+			"null"
+		}
+	}
+
+	ruler = {
+		name = "Peter Weyland"
+		gender = male
+		portrait = "human_male_02"
+		texture = 0
+		attachment = 1
+		clothes = 0
+		trait = "trait_ruler_eye_for_talent"
+		leader_class = official
+	}
+}

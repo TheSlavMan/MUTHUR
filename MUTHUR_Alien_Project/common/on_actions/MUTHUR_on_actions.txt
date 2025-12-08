@@ -1,0 +1,38 @@
+on_game_start_country = {
+	# Scope: country
+	events = {
+		# System initializer check
+		MUTHUR.1
+		# Base game setup
+		MUTHUR.3
+		# Weyland start project
+		MUTHUR.1000
+	}
+}
+
+# Fires when any technology is researched
+on_tech_increased = {
+	# Weyland finishing Terrestrial Sculpting
+	events = { MUTHUR.1003 }
+}
+
+
+#on_archaeological_site_completed = {
+#	# Scope: planet (site's planet)
+#	# NOTE: The events listed here should include their own triggers/pre_triggers
+#	# if you want them to filter to specific site keys. For now they are
+#	# is_triggered_only and will be called via this hook.
+#	events = {
+#		MUTHUR.101    # Scotland site finished → present funding/dispatch step
+#		MUTHUR.105    # LV-223 site finished → colonizable + Strange Signals + logs timer
+#	}
+#}
+
+#on_special_project_completed = {
+#	# Scope: country (owner that completed the project)
+#	# MUTHUR.103 should verify that the finished project was MUTHUR_lv223_dispatch
+#	# (or be is_triggered_only and handle logic internally).
+#	events = {
+#		MUTHUR.103    # Dispatch project winner → claim LV-223 dig site
+#	}
+#}

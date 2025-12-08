@@ -1,0 +1,152 @@
+namespace = MUTHUR
+
+#################################################
+# MUTHUR Special Project Events
+#################################################
+
+
+# Seeding: give Weyland their project at game start (or when tag appears)
+country_event  = {
+    id = MUTHUR.1000
+    hide_window = yes
+    is_triggered_only = yes
+    immediate = {
+        log = "MUTHUR: Seeding weyland terraforming project timer"
+        if = {
+            limit = { has_country_flag = MUTHUR_empire_weyland }
+            country_event = { id = MUTHUR.1001 days = 30 }
+        }
+    }
+}
+
+# Terraforming research project popup
+country_event = {
+    id = MUTHUR.1001
+    title = MUTHUR_weyland_terraform_start_title
+    desc = MUTHUR_weyland_terraform_start_desc
+    picture = GFX_evt_drilling_for_gas
+    is_triggered_only = yes
+    location = capital_scope
+
+    immediate = {
+        log = "MUTHUR: Weyland terraforming project popup"
+    }
+
+    option = {
+        name = CURIOUS
+        if = {
+            limit = { NOT = { has_country_flag = MUTHUR_weyland_project_given } }
+
+            # Give them the special project
+            capital_scope = {
+                enable_special_project = {
+                    name = "MUTHUR_WEYLAND_TERRAFORMING_PUSH"
+                    location = this
+                    owner = root.owner
+                }
+            }
+            set_country_flag = MUTHUR_weyland_project_given
+        }
+    }
+}
+
+# Weyland completes push project -> add progress toward Terrestrial Sculpting
+country_event = {
+    id = MUTHUR.1002
+    title = MUTHUR_weyland_terraform_title
+    desc  = MUTHUR_weyland_terraform_desc
+    picture = GFX_evt_drilling_for_gas
+    is_triggered_only = yes
+
+    immediate = {
+        log = "MUTHUR: Weyland terraforming project complete"
+
+        set_global_flag = MUTHUR_weyland_terraforming_push_done
+        add_research_option = tech_terrestrial_sculpting
+        add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.50 } # 50% progress
+        set_country_flag = MUTHUR_weyland_terraforming_push_completed
+    }
+
+    option = {
+        name = OK
+    }
+}
+
+# When Weyland actually researches Terrestrial Sculpting, give Heist projects
+# Uses on_tech_increased listener in MUTHUR_on_actions
+country_event = {
+    id = MUTHUR.1003
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_country_flag = MUTHUR_empire_weyland
+        has_technology = tech_terrestrial_sculpting
+        has_country_flag = MUTHUR_weyland_terraforming_push_completed
+        NOT = { has_country_flag = MUTHUR_heists_given }
+        last_increased_tech = "tech_terrestrial_sculpting"
+    }
+
+    immediate = {
+        log = "MUTHUR: Seegson/Yutani terraforming project heist"
+        set_country_flag = MUTHUR_heists_given
+
+        # Hand the heist project to Seegson & Yutani if they exist
+        every_country = {
+            limit = {
+                is_country_type = default
+                OR = { has_country_flag = MUTHUR_empire_seegson has_country_flag = MUTHUR_empire_yutani }
+            }
+            country_event = { id = MUTHUR.1004 }
+        }
+    }
+}
+
+# Terraforming heist project popup
+country_event = {
+    id = MUTHUR.1004
+    title = MUTHUR_terraform_heist_start_title
+    desc = MUTHUR_terraform_heist_start_desc
+    picture = GFX_evt_drilling_for_gas
+    is_triggered_only = yes
+    location = capital_scope
+
+    immediate = {
+        log = "MUTHUR: Seegson/Yutani terraforming project heist popup"
+    }
+
+    option = {
+        name = CURIOUS
+        if = {
+            limit = { NOT = { has_country_flag = MUTHUR_heist_project_given } }
+
+            # Give them the special project
+            capital_scope = {
+                enable_special_project = {
+                    name = "MUTHUR_CORP_TERRAFORMING_HEIST"
+                    location = this
+                    owner = root.owner
+                }
+            }
+            set_country_flag = MUTHUR_heist_project_given
+        }
+    }
+}
+
+# Seegson/Yutani complete the Heist -> grant same tech boost
+country_event = {
+    id = MUTHUR.1005
+    title = MUTHUR_steal_terraform_title
+    desc  = MUTHUR_steal_terraform_desc
+    picture = GFX_evt_spymaster
+    is_triggered_only = yes
+
+    immediate = {
+        log = "MUTHUR: Seegson/Yutani terraforming project heist complete for [This.GetName]"
+        add_research_option = tech_terrestrial_sculpting
+        add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.50 } # mirror Weyland's boost
+        set_country_flag = MUTHUR_corp_terraforming_heist_completed
+    }
+
+    option = { name = OK }
+}

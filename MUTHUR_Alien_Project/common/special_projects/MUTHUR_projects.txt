@@ -1,0 +1,63 @@
+special_project = {
+	key = "MUTHUR_WEYLAND_TERRAFORMING_PUSH"
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	cost = 1000
+	tech_department = engineering_technology
+	picture = GFX_evt_colony_settlement
+	sound = yes
+	location = yes
+	timelimit = -1
+
+	event_scope = country_event
+
+	AI_wait_days = {
+		weight = 15
+	}
+
+	on_success = {
+		owner = {
+			country_event = { id = MUTHUR.1002 }
+		}
+	}
+}
+
+special_project = {
+	key = "MUTHUR_CORP_TERRAFORMING_HEIST"
+	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
+	cost = 1000
+	tech_department = engineering_technology
+	picture = GFX_evt_cover_blown
+	sound = yes
+	location = yes
+	timelimit = -1
+
+	event_scope = country_event
+
+	AI_wait_days = {
+		weight = 15
+	}
+
+	on_success = {
+		owner = {
+			country_event = { id = MUTHUR.1005 }
+		}
+	}
+}
+
+# MUTHUR_lv223_dispatch = {
+    # cost = { category = engineering base = 2000 }
+    # icon = "GFX_situation_log_cat_anomaly"
+    # on_success = { country_event = { id = MUTHUR_events.200 } }
+    # desc = MUTHUR_lv223_dispatch_desc
+    # title = MUTHUR_lv223_dispatch_title
+    # is_special_project = yes
+# }
+
+# MUTHUR_lv223_logs_recovery = {
+    # cost = { category = society base = 1000 }
+    # icon = "GFX_situation_log_cat_anomaly"
+    # on_success = { country_event = { id = MUTHUR_events.30 } }
+    # desc = MUTHUR_lv223_logs_recovery_desc
+    # title = MUTHUR_lv223_logs_recovery_title
+    # is_special_project = yes
+# }

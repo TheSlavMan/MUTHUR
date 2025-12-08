@@ -1,0 +1,1561 @@
+# MUTHUR Solar System Weyland Start Initializer
+
+@distance = 50
+@base_moon_distance = 10
+@maxJumps = 5
+
+# Sol System
+MUTHUR_earth_system_initializer = {
+	name = "NAME_Sol"
+
+	class = "sc_g"
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 145
+	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 290
+	}
+
+	flags = { MUTHUR_sol_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+
+	usage = custom_empire
+
+	init_effect = {
+		generate_home_system_resources = yes
+	}
+
+	planet = {
+		name = "NAME_Sol"
+		class = "pc_g_star"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 30
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Mercury"
+		class = "pc_molten"
+		orbit_distance = 40
+		orbit_angle = 15
+		size = 10
+		has_ring = no
+		init_effect = {
+			set_planet_entity = {
+				entity = molten_planet_mercury_entity
+				atmosphere_color = hsv { 0.8 0.1 0.2 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_Venus"
+		class = "pc_toxic"
+		orbit_distance = 25
+		orbit_angle = 125
+		size = 17
+		has_ring = no
+		init_effect = {
+			set_planet_entity = {
+				entity = toxic_planet_venus_entity
+				atmosphere_color = hsv { 0.854 0.072 0.7 }
+				atmosphere_intensity = 0.2
+				atmosphere_width = 1.0
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_Earth"
+		class = "pc_continental"
+		orbit_distance = 25
+		orbit_angle = 120
+		size = 18
+		starting_planet = yes
+		has_ring = no
+		entity = "continental_planet_earth_entity"
+		deposit_blockers = none
+		modifiers = none
+		flags = { MUTHUR_weyland_capital }
+
+		init_effect = {
+			save_global_event_target_as = MUTHUR_system_earth
+
+			prevent_anomaly = yes
+		}
+
+		moon = {
+			name = "NAME_Luna"
+			class = "pc_barren_cold"
+			size = 5
+			orbit_distance = 12
+			orbit_angle = 40
+			has_ring = no
+			entity = "cold_barren_planet_luna_entity"
+		}
+	}
+
+
+	planet = {
+		name = "NAME_Mars"
+		class = "pc_barren"
+		orbit_distance = 25
+		orbit_angle = 60
+		size = 13
+		has_ring = no
+		entity = "barren_planet_mars_entity"
+		flags = { planet_mars }
+
+		init_effect = {
+			add_modifier = {
+				modifier = "terraforming_candidate"
+				days = -1
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_1_Ceres"
+		class = "pc_asteroid"
+		orbit_distance = 30
+		orbit_angle = -210
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_2_Pallas"
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = -95
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_3_Juno"
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = 285
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_4_Vesta"
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = -80
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Jupiter"
+		class = "pc_gas_giant"
+		orbit_distance = 40
+		orbit_angle = -160
+		size = 35
+		has_ring = no
+		entity = "gas_giant_jupiter_entity"
+		change_orbit = 6
+
+		moon = {
+			name = "NAME_Io"
+			class = "pc_molten"
+			size = 6
+			orbit_distance = 10
+			orbit_angle = 110
+			has_ring = no
+		}
+		moon = {
+			name = "NAME_Europa"
+			class = "pc_frozen"
+			size = 6
+			orbit_distance = 2.5
+			orbit_angle = 190
+			has_ring = no
+		}
+		moon = {
+			name = "NAME_Ganymede"
+			class = "pc_frozen"
+			size = 9
+			orbit_distance = 2.5
+			orbit_angle = 80
+			has_ring = no
+		}
+		moon = {
+			name = "NAME_Callisto"
+			class = "pc_frozen"
+			size = 7
+			orbit_distance = 2.5
+			orbit_angle = -155
+			has_ring = no
+		}
+	}
+
+	planet = {
+		name = "NAME_Saturn"
+		class = "pc_gas_giant"
+		orbit_distance = 25
+		orbit_angle = 170
+		size = 30
+		has_ring = yes
+		entity = "gas_giant_05_entity"
+		change_orbit = 7
+
+		moon = {
+			name = "NAME_Titan"
+			class = "pc_frozen"
+			size = 8
+			orbit_distance = 12
+			orbit_angle = 320
+			has_ring = no
+		}
+	}
+
+	planet = {
+		name = "NAME_Uranus"
+		class = "pc_gas_giant"
+		orbit_distance = 25
+		orbit_angle = 125
+		size = 20
+		has_ring = no
+		init_effect = {
+			set_planet_entity = {
+				entity = gas_giant_uranus_entity
+				atmosphere_color = hsv { 0.548 0.519 0.9 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_Neptune"
+		class = "pc_gas_giant"
+		orbit_distance = 25
+		orbit_angle = -195
+		size = 20
+		has_ring = no
+		change_orbit = 4
+
+		moon = {
+			name = "NAME_Triton"
+			class = "pc_frozen"
+			size = 6
+			orbit_distance = 7
+			orbit_angle = 115
+			has_ring = no
+		}
+
+		init_effect = {
+			set_planet_entity = {
+				entity = gas_giant_neptune_entity
+				atmosphere_color = hsv { 0.626 0.782 0.9 }
+				atmosphere_intensity = 0.1
+				atmosphere_width = 1.0
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_134340_Pluto"
+		class = "pc_asteroid"
+		orbit_distance = 30
+		orbit_angle = -210
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136472_Makemake"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -95
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136108_Haumea"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = 285
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_20000_Varuna"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -80
+		size = 5
+		has_ring = no
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_kapteyns_star_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_ag4550_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 1 max = 1 }
+		initializer = "MUTHUR_alpha_centauri_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 1 max = 1 }
+		initializer = "MUTHUR_barnards_star_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_cygni_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 1 max = 1 }
+		initializer = "MUTHUR_lalande_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_tau_ceti_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_kruger_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_gj1232_system"
+	}
+	
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_gj667_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_heske337_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_pol5362_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 2 max = @maxJumps }
+		initializer = "MUTHUR_alpha_fornacis_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_beta_canum_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_zeta_doradus_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_tycho2_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_nn3346_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_alpha_caeli_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_zeta2_reticuli_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_epsilon_reticuli_system"
+	}
+
+	neighbor_system = {
+		hyperlane_jumps = { min = 3 max = @maxJumps }
+		initializer = "MUTHUR_zeta1_reticuli_system"
+	}
+}
+
+# Kapteyn's Star System
+MUTHUR_kapteyns_star_system = {
+	name = "MUTHUR_Kapteyns_Star_System_Name"
+	class = sc_m
+	flags = { MUTHUR_kapteyns_star_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 1 }
+		class = pc_molten
+		orbit_distance = 35
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 7 max = 10 }
+		has_ring = no
+
+		moon = {
+			count = { min = 0 max = 1 }
+			class = pc_asteroid
+			orbit_distance = 6
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 3 max = 5 }
+		}
+	}
+
+	planet = {
+		name = "Ostara"
+		class = pc_continental
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+		size = { min = 16 max = 20 }
+		has_ring = no
+		modifiers = none
+
+		# Modest moon for early orbital play
+		moon = {
+			name = "Freya"
+			class = pc_barren_cold
+			orbit_distance = 8
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			has_ring = no
+			init_effect = {
+				add_deposit = d_minerals_2
+			}
+		}
+	}
+
+	planet = {
+		name = "Kapteyn III"
+		class = pc_barren
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 12 max = 15 }
+		has_ring = no
+		init_effect = { add_modifier = { modifier = "terraforming_candidate" days = -1 } }
+	}
+
+	planet = {
+		count = { min = 2 max = 3 }
+		class = pc_asteroid
+		orbit_distance = 20
+		orbit_angle = { min = 0 max = 360 }
+		size = 5
+		init_effect = {
+			add_deposit = d_minerals_2
+		}
+	}
+
+	planet = {
+		name = "Skoll"
+		class = pc_gas_giant
+		orbit_distance = 30
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 18 max = 24 }
+		has_ring = yes
+		init_effect = {
+			add_deposit = d_energy_3
+		}
+
+		moon = {
+			name = "Hel"
+			class = pc_frozen
+			orbit_distance = 10
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 5 max = 7 }
+			init_effect = {
+				add_deposit = d_energy_2
+			}
+		}
+		moon = {
+			name = "Fenrir"
+			class = pc_barren_cold
+			orbit_distance = 6
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			init_effect = {
+				add_deposit = d_minerals_2
+			}
+		}
+	}
+
+	planet = {
+		name = "Niflheim"
+		class = pc_frozen
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 11 max = 14 }
+		has_ring = no
+	}
+
+	planet = {
+		count = { min = 2 max = 4 }
+		class = pc_ice_asteroid
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = 5
+		init_effect = {
+			add_deposit = d_energy_2
+		}
+	}
+}
+
+# Alpha Fornacis System
+MUTHUR_alpha_fornacis_system = {
+	name = "MUTHUR_Alpha_Fornacis_System_Name"
+	class = sc_m
+	flags = { MUTHUR_alpha_fornacis_system_flag MUTHUR_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# NN3346 System
+MUTHUR_nn3346_system = {
+	name = "MUTHUR_NN3346_System_Name"
+	class = sc_m
+	flags = { MUTHUR_nn3346_system_flag MUTHUR_system_flag MUTHUR_external_neighbor }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Alpha Caeli System
+MUTHUR_alpha_caeli_system = {
+	name = "MUTHUR_Alpha_Caeli_System_Name"
+	class = sc_m
+	flags = { MUTHUR_alpha_caeli_system_flag MUTHUR_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# AG-4550 System
+MUTHUR_ag4550_system = {
+	name = "MUTHUR_AG4550_System_Name"
+	class = sc_m
+	flags = { MUTHUR_ag4550_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# POL-5362 System
+MUTHUR_pol5362_system = {
+	name = "MUTHUR_POL5362_System_Name"
+	class = sc_m
+	flags = { MUTHUR_pol5362_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Zeta Doradus System
+MUTHUR_zeta_doradus_system = {
+	name = "MUTHUR_Zeta_Doradus_System_Name"
+	class = sc_m
+	flags = { MUTHUR_zeta_doradus_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Tycho 2-2000 System
+MUTHUR_tycho2_system = {
+	name = "MUTHUR_Tycho2_System_Name"
+	class = sc_m
+	flags = { MUTHUR_tycho2_system_flag MUTHUR_system_flag MUTHUR_external_neighbor }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Zeta 2 Reticuli System
+MUTHUR_zeta2_reticuli_system = {
+	name = "MUTHUR_Zeta2_Reticuli_System_Name"
+	class = sc_m
+	flags = { MUTHUR_zeta2_reticuli_system_flag MUTHUR_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Zeta 1 Reticuli System
+MUTHUR_zeta1_reticuli_system = {
+	name = "MUTHUR_Zeta1_Reticuli_System_Name"
+	class = sc_m
+	flags = { MUTHUR_zeta1_reticuli_system_flag MUTHUR_system_flag }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Epsilon Reticuli System
+MUTHUR_epsilon_reticuli_system = {
+	name = "MUTHUR_Epsilon_Reticuli_System_Name"
+	class = sc_m
+	flags = { MUTHUR_epsilon_reticuli_system_flag MUTHUR_system_flag MUTHUR_external_neighbor }
+
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Alpha Centauri System
+MUTHUR_alpha_centauri_system = {
+	name = "NAME_Alpha_Centauri"
+	class = sc_trinary_1
+	flags = { MUTHUR_alpha_centauri_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		name = "MUTHUR_Rigil_Kentaurus_Star_Name"
+		count = 1
+		class = pc_g_star
+		orbit_distance = 15
+		orbit_angle = 350
+		size = 32
+		has_ring = no
+	}
+
+	planet = {
+		name = "MUTHUR_Toliman_Star_Name"
+		count = 1
+		class = pc_k_star
+		orbit_distance = -35
+		orbit_angle = 10
+		size = 27
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Proxima_Centauri"
+		count = 1
+		class = pc_m_star
+		orbit_distance = 260
+		orbit_angle = 130
+		size = 15
+		has_ring = no
+
+		planet = {
+			name = "NAME_Proxima_Centauri_b"
+			class = pc_barren_cold
+			size = 20
+			orbit_distance = 35
+			init_effect = {
+				prevent_anomaly = yes
+				add_anomaly = {
+					category = ALPHA_CENTAURI_CAT
+				}
+				add_modifier = {
+					modifier = "tidal_locked"
+					days = -1
+				}
+			}
+		}
+
+		planet = {
+			name = "NAME_Proxima_Centauri_c"
+			class = pc_gas_giant
+			size = 18
+			orbit_distance = 25
+		}
+	}
+
+	change_orbit = -220
+
+	planet = {
+		count = 2
+		orbit_distance = 25
+
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = 1
+		orbit_distance = 30
+		class = ideal_design_class
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 12 max = 18 }
+
+		init_effect = {
+			prevent_anomaly = yes
+			set_planet_flag = prescripted_ideal		# used by code, do not remove
+		}
+	}
+
+	planet = {
+		count = 2
+		orbit_distance = 25
+
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+}
+
+# Heske 337 System
+MUTHUR_heske337_system = {
+	name = "MUTHUR_Heske337_System_Name"
+	class = sc_m
+	flags = { MUTHUR_heske337_system_flag MUTHUR_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Barnard's Star System
+MUTHUR_barnards_star_system = {
+	name = "NAME_Barnards_Star"
+	class = sc_m
+	flags = { MUTHUR_barnards_star_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		name = "MUTHUR_Koryo_Planet_Name"
+		class = "pc_barren_cold"
+
+		orbit_distance = 30
+		orbit_angle = { min = 45 max = 220 }
+		size = { min = 18 max = 22 }
+		flags = { MUTHUR_yutani_habitat_planet has_megastructure }
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = { modifier = terraforming_candidate days = -1 }
+		}
+
+		moon = {
+			name = "MUTHUR_Akatsuki_Planet_Name"
+			class = "pc_habitat"
+			orbit_distance = 12
+			orbit_angle = 40
+			size = 6
+			deposit_blockers = none
+			flags = { MUTHUR_yutani_capital special_start_planet megastructure habitat habitat_level_1 }
+			init_effect = {
+				log = "MUTHUR: Generating Yutani"
+
+				prevent_anomaly = yes
+				save_global_event_target_as = MUTHUR_system_akatsuki
+
+				create_species = {
+					name = NAME_Human
+					plural = NAME_Human_plural
+					class = "HUM"
+					portrait = "human"
+					homeworld = THIS
+					traits = {
+						trait = "trait_adaptive"
+						trait = "trait_nomadic"
+					}
+				}
+				last_created_species = {
+					save_global_event_target_as = MUTHUR_yutani_species
+				}
+				create_country = {
+					name = "Yutani Corporation"
+					adjective = "Yutani"
+					authority = auth_corporate
+					civics = {
+						civic = civic_brand_loyalty
+						civic = civic_private_prospectors
+					}
+					species = event_target:MUTHUR_yutani_species
+					name_list = "HUMAN2"
+					ship_prefix = "USCSS"
+					ethos = {
+						ethic = "ethic_authoritarian"
+						ethic = "ethic_xenophile"
+						ethic = "ethic_materialist"
+					}
+					flag = {
+						icon = {
+							category = "corporate"
+							file = "corporate_yutani.dds"
+						}
+						background = {
+							category = "backgrounds"
+							file = "00_solid.dds"
+						}
+						colors = {
+							"light_blue"
+							"dark_blue"
+							"null"
+							"null"
+						}
+					}
+					type = default
+					origin = "origin_default"
+					effect = {
+						save_global_event_target_as = npc_Yutani
+						set_country_flag = MUTHUR_empire_yutani
+						create_leader = {
+							class = official
+							species = event_target:npc_Yutani
+							name = "Hideo Yutani"
+							gender = male
+						}
+						while = {
+							count = 3
+							create_leader = {
+								class = scientist
+								species = event_target:npc_Yutani
+							}
+						}
+						give_technology = {
+							tech = tech_habitat_1
+							message = no
+						}
+						add_research_option = tech_habitat_2
+					}
+				}
+				create_colony = {
+					owner = event_target:npc_Yutani
+					species = event_target:MUTHUR_yutani_species
+				}
+				create_pop_group = {
+					size = 1500
+					species = event_target:MUTHUR_yutani_species
+				}
+				set_name = "MUTHUR_Akatsuki_Planet_Name"
+			}
+		}
+	}
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:npc_Yutani
+		}
+	}
+}
+
+# GJ1232 System
+MUTHUR_gj1232_system = {
+	name = "MUTHUR_GJ1232_System_Name"
+	class = sc_m
+	flags = { MUTHUR_gj1232_system_flag MUTHUR_system_flag MUTHUR_external_neighbor }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# GJ667 System
+MUTHUR_gj667_system = {
+	name = "MUTHUR_GJ667_System_Name"
+	class = sc_m
+	flags = { MUTHUR_gj667_system_flag MUTHUR_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Cygni System
+MUTHUR_cygni_system = {
+	name = "MUTHUR_Cygni_System_Name"
+	class = sc_m
+	flags = { MUTHUR_cygni_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Kruger System
+MUTHUR_kruger_system = {
+	name = "MUTHUR_Kruger_System_Name"
+	class = sc_m
+	flags = { MUTHUR_kruger_system_flag MUTHUR_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Beta Canum Venaticorum System
+MUTHUR_beta_canum_system = {
+	name = "MUTHUR_Beta_Canum_System_Name"
+	class = sc_m
+	flags = { MUTHUR_beta_canum_system_flag MUTHUR_system_flag MUTHUR_external_neighbor }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}
+
+# Lalande System
+MUTHUR_lalande_system = {
+	name = "MUTHUR_Lalande_System_Name"
+	class = sc_m
+	flags = { MUTHUR_lalande_system_flag MUTHUR_system_flag MUTHUR_core_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	# --- Hot inner rocky (GJ 411 b analog) ---
+	planet = {
+		name = "GJ 411 b"
+		class = pc_molten
+		orbit_distance = 15
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 7 max = 10 }
+		has_ring = no
+
+		moon = {
+			count = { min = 0 max = 1 }
+			class = pc_asteroid
+			orbit_distance = 6
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 3 max = 5 }
+		}
+	}
+
+	# --- Oryza — habitable agri world (two natural moons) ---
+	planet = {
+		name = "Oryza"
+		class = pc_tropical
+		orbit_distance = 25
+		orbit_angle = { min = 60 max = 300 }
+		size = { min = 16 max = 20 }
+		has_ring = no
+		deposit_blockers = none
+		modifiers = none
+
+		moon = {
+			name = "Demeter"
+			class = pc_barren_cold
+			orbit_distance = 7
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			init_effect = {
+				add_deposit = d_minerals_2
+			}
+		}
+		moon = {
+			name = "Ceres"
+			class = pc_frozen
+			orbit_distance = 10
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			init_effect = {
+				add_deposit = d_energy_2
+			}
+		}
+	}
+
+	# --- Terraforming candidate (barren) ---
+	planet = {
+		name = "Lalande III"
+		class = pc_barren
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 12 max = 15 }
+		has_ring = no
+		init_effect = { add_modifier = { modifier = terraforming_candidate days = -1 } }
+	}
+
+	# --- Inner rubble (mining belt stand-ins) ---
+	planet = {
+		count = { min = 2 max = 3 }
+		class = pc_asteroid
+		orbit_distance = 20
+		orbit_angle = { min = 0 max = 360 }
+		size = 5
+		init_effect = {
+			add_deposit = d_minerals_2
+		}
+	}
+
+	# --- Outer ice giant (GJ 411 c analog) + small moons ---
+	planet = {
+		name = "GJ 411 c"
+		class = pc_frozen
+		orbit_distance = 50
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 18 max = 24 }
+		has_ring = yes
+		init_effect = {
+			add_deposit = d_energy_3
+		}
+
+		moon = {
+			name = "Iphis"
+			class = pc_frozen
+			orbit_distance = 8
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			init_effect = {
+				add_deposit = d_energy_2
+			}
+		}
+		moon = {
+			name = "Ioannes"
+			class = pc_barren_cold
+			orbit_distance = 5
+			orbit_angle = { min = 0 max = 360 }
+			size = { min = 4 max = 6 }
+			init_effect = {
+				add_deposit = d_minerals_2
+			}
+		}
+	}
+
+	# --- Far cold world (terraformable later via tech, not at start) ---
+	planet = {
+		name = "Persephone"
+		class = pc_frozen
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = { min = 11 max = 14 }
+		has_ring = no
+	}
+
+	# --- Outer rubble / Kuiper-ish ---
+	planet = {
+		count = { min = 2 max = 4 }
+		class = pc_ice_asteroid
+		orbit_distance = 25
+		orbit_angle = { min = 0 max = 360 }
+		size = 5
+		init_effect = {
+			add_deposit = d_energy_2
+		}
+	}
+}
+
+# Tau Ceti System
+MUTHUR_tau_ceti_system = {
+	name = "MUTHUR_Tau_Ceti_System_Name"
+	class = sc_m
+	flags = { MUTHUR_tau_ceti_system_flag MUTHUR_system_flag }
+	
+	usage = custom_empire
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 45
+
+	planet = {
+		count = { min = 0 max = 2 }
+		orbit_distance = 20
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		count = { min = 2 max = 5 }
+		orbit_distance = 20
+	}
+}

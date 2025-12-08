@@ -1,0 +1,69 @@
+# namespace = MUTHUR
+
+# # Wrapper site stage events (must be fleet/planet scope)
+
+# fleet_event = {
+  # id = MUTHUR.110
+  # title = "MUTHUR.110.name"
+  # desc = MUTHUR.110.desc
+  # picture = GFX_evt_overgrown_city
+  # show_sound = event_wind_ruins
+  # location = from
+
+  # archaeology = yes
+
+  # is_triggered_only = yes
+
+  # option = {
+    # name = MUTHUR.110.a
+  # }
+  
+# }
+
+# fleet_event = {
+  # id = MUTHUR.111
+  # title = "MUTHUR.111.name"
+  # desc = MUTHUR.111.desc
+  # picture = GFX_evt_overgrown_city
+  # show_sound = event_wind_ruins
+  # location = from
+
+  # archaeology = yes
+
+  # is_triggered_only = yes
+
+  # immediate = {
+    # owner = { country_event = { id = MUTHUR.101 } }  # Scotland stage2 → funding
+  # }
+  
+  # option = {
+    # name = MUTHUR.111.a
+  # }
+# }
+
+# fleet_event = {
+  # id = MUTHUR.120
+  # is_triggered_only = yes
+  # hide_window = yes
+  # immediate = {
+    # owner = { country_event = { id = MUTHUR.300 } }  # LV-223 stage1 flavor
+  # }
+# }
+
+# fleet_event = {
+  # id = MUTHUR.121
+  # is_triggered_only = yes
+  # hide_window = yes
+  # immediate = {
+    # owner = { country_event = { id = MUTHUR.301 } }  # LV-223 stage2 flavor
+  # }
+# }
+
+# fleet_event = {
+  # id = MUTHUR.122
+  # is_triggered_only = yes
+  # hide_window = yes
+  # immediate = {
+    # owner = { country_event = { id = MUTHUR.105 } }  # LV-223 finale
+  # }
+# }

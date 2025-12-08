@@ -1,0 +1,62 @@
+# Metascript args (4.x): callers must pass FLAG and MISSING_FLAG (UPPERCASE).
+# Checks whether any star has the given $FLAG$. If not, mark a country flag as missing.
+MUTHUR_mark_missing_if_absent = {
+    if = {
+        limit = { NOT = { any_system = { has_star_flag = $FLAG$ } } }
+        set_country_flag = $MISSING_FLAG$
+        set_country_flag = MUTHUR_missing_any
+    }
+}
+
+# Clear all "missing" flags before re-checking
+MUTHUR_clear_missing_flags = {
+    remove_country_flag = MUTHUR_missing_any
+    remove_country_flag = MUTHUR_missing_sol
+    remove_country_flag = MUTHUR_missing_kapteyns
+    remove_country_flag = MUTHUR_missing_ag4550
+    remove_country_flag = MUTHUR_missing_alpha_centauri
+    remove_country_flag = MUTHUR_missing_barnards
+    remove_country_flag = MUTHUR_missing_cygni
+    remove_country_flag = MUTHUR_missing_lalande
+    remove_country_flag = MUTHUR_missing_tau_ceti
+    remove_country_flag = MUTHUR_missing_kruger
+    remove_country_flag = MUTHUR_missing_gj1232
+    remove_country_flag = MUTHUR_missing_gj667
+    remove_country_flag = MUTHUR_missing_heske337
+    remove_country_flag = MUTHUR_missing_pol5362
+    remove_country_flag = MUTHUR_missing_alpha_fornacis
+    remove_country_flag = MUTHUR_missing_beta_canum
+    remove_country_flag = MUTHUR_missing_zeta_doradus
+    remove_country_flag = MUTHUR_missing_tycho2
+    remove_country_flag = MUTHUR_missing_nn3346
+    remove_country_flag = MUTHUR_missing_alpha_caeli
+    remove_country_flag = MUTHUR_missing_zeta2_ret
+    remove_country_flag = MUTHUR_missing_epsilon_ret
+    remove_country_flag = MUTHUR_missing_zeta1_ret
+}
+
+# Helper that calls the checker for every system you expect on the map
+MUTHUR_check_all_required_systems = {
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_sol_system_flag                 MISSING_FLAG = MUTHUR_missing_sol }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_kapteyns_star_system_flag       MISSING_FLAG = MUTHUR_missing_kapteyns }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_ag4550_system_flag              MISSING_FLAG = MUTHUR_missing_ag4550 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_alpha_centauri_system_flag      MISSING_FLAG = MUTHUR_missing_alpha_centauri }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_barnards_star_system_flag       MISSING_FLAG = MUTHUR_missing_barnards }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_cygni_system_flag               MISSING_FLAG = MUTHUR_missing_cygni }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_lalande_system_flag             MISSING_FLAG = MUTHUR_missing_lalande }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_tau_ceti_system_flag            MISSING_FLAG = MUTHUR_missing_tau_ceti }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_kruger_system_flag              MISSING_FLAG = MUTHUR_missing_kruger }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_gj1232_system_flag              MISSING_FLAG = MUTHUR_missing_gj1232 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_gj667_system_flag               MISSING_FLAG = MUTHUR_missing_gj667 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_heske337_system_flag            MISSING_FLAG = MUTHUR_missing_heske337 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_pol5362_system_flag             MISSING_FLAG = MUTHUR_missing_pol5362 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_alpha_fornacis_system_flag      MISSING_FLAG = MUTHUR_missing_alpha_fornacis }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_beta_canum_system_flag          MISSING_FLAG = MUTHUR_missing_beta_canum }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_zeta_doradus_system_flag        MISSING_FLAG = MUTHUR_missing_zeta_doradus }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_tycho2_system_flag              MISSING_FLAG = MUTHUR_missing_tycho2 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_nn3346_system_flag              MISSING_FLAG = MUTHUR_missing_nn3346 }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_alpha_caeli_system_flag         MISSING_FLAG = MUTHUR_missing_alpha_caeli }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_zeta2_reticuli_system_flag      MISSING_FLAG = MUTHUR_missing_zeta2_ret }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_epsilon_reticuli_system_flag    MISSING_FLAG = MUTHUR_missing_epsilon_ret }
+    MUTHUR_mark_missing_if_absent = { FLAG = MUTHUR_zeta1_reticuli_system_flag      MISSING_FLAG = MUTHUR_missing_zeta1_ret }
+}

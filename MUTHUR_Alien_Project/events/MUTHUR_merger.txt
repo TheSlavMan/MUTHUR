@@ -1,0 +1,124 @@
+# namespace = MUTHUR
+
+# ###############################################
+# # Weyland–Yutani Merger (scripted, 4.0‑ready)
+# #
+# # Notes:
+# # - Replaces deprecated effects (absorb_empire / change_country_name / change_country_adjective)
+# # - Uses explicit asset transfer loops (planets, starbases, fleets)
+# # - Sets flags you can use for dynamic naming via scripted_loc
+# # - Assumes setup saved these event targets:
+# #     event_target:MUTHUR_weyland_empire
+# #     event_target:MUTHUR_yutani_empire
+# ###############################################
+
+# # Merger offer – show to the initiating corp (usually Weyland; you can call this for Yutani instead if player is Yutani)
+# country_event = {
+  # id = MUTHUR.4100
+  # title = "MUTHUR_merge_title"
+  # desc  = "MUTHUR_merge_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+
+  # trigger = {
+    # exists = event_target:MUTHUR_weyland_empire
+    # exists = event_target:MUTHUR_yutani_empire
+    # NOT = { has_country_flag = MUTHUR_merged_corp }
+  # }
+
+  # option = { # Proceed with merger
+    # name = "MUTHUR_merge_yes"
+    # ai_chance = { factor = 100 }
+
+    # hidden_effect = {
+      # # Decide which way we merge: if ROOT is Weyland, absorb Yutani; if ROOT is Yutani, absorb Weyland
+      # if = {
+        # limit = { is_same_value = event_target:MUTHUR_weyland_empire }
+        # country_event = { id = MUTHUR.4110 } # Weyland absorbs Yutani
+      # }
+      # if = {
+        # limit = { is_same_value = event_target:MUTHUR_yutani_empire }
+        # country_event = { id = MUTHUR.4120 } # Yutani absorbs Weyland (player‑as‑Yutani path)
+      # }
+    # }
+  # }
+
+  # option = { # Decline – leave for later
+    # name = "MUTHUR_merge_no"
+  # }
+# }
+
+# # Helper – Transfer all assets from FROM to TO and mark flags
+# # This is done inline as an event so we keep 4.0 syntax happy.
+# #
+# # 4110: Weyland <- Yutani
+# # 4120: Yutani  <- Weyland
+
+# country_event = {
+  # id = MUTHUR.4110
+  # hide_window = yes
+  # is_triggered_only = yes
+
+  # immediate = {
+    # # Safety: ensure both targets exist
+    # if = { limit = { NOT = { exists = event_target:MUTHUR_weyland_empire } } return = yes }
+    # if = { limit = { NOT = { exists = event_target:MUTHUR_yutani_empire } } return = yes }
+
+    # # Transfer planets, starbases and fleets from Yutani to Weyland
+    # event_target:MUTHUR_yutani_empire = {
+      # every_owned_planet = {
+        # set_owner = event_target:MUTHUR_weyland_empire
+      # }
+      # every_system_within_border = {
+        # starbase = {
+          # set_owner = event_target:MUTHUR_weyland_empire
+        # }
+      # }
+      # every_owned_fleet = {
+        # set_owner = event_target:MUTHUR_weyland_empire
+      # }
+      # set_country_flag = MUTHUR_merged_defunct # mark leftover shell (no direct delete in events)
+    # }
+
+    # # Mark Weyland as merged corp for dynamic naming (scripted_loc)
+    # event_target:MUTHUR_weyland_empire = { set_country_flag = MUTHUR_merged_corp }
+  # }
+# }
+
+# country_event = {
+  # id = MUTHUR.4120
+  # hide_window = yes
+  # is_triggered_only = yes
+
+  # immediate = {
+    # if = { limit = { NOT = { exists = event_target:MUTHUR_weyland_empire } } return = yes }
+    # if = { limit = { NOT = { exists = event_target:MUTHUR_yutani_empire } } return = yes }
+
+    # # Transfer planets, starbases and fleets from Weyland to Yutani
+    # event_target:MUTHUR_weyland_empire = {
+      # every_owned_planet = { set_owner = event_target:MUTHUR_yutani_empire }
+      # every_system_within_border = { starbase = { set_owner = event_target:MUTHUR_yutani_empire } }
+      # every_owned_fleet = { set_owner = event_target:MUTHUR_yutani_empire }
+      # set_country_flag = MUTHUR_merged_defunct
+    # }
+
+    # event_target:MUTHUR_yutani_empire = { set_country_flag = MUTHUR_merged_corp }
+  # }
+# }
+
+# ###############################################
+# # OPTIONAL: follow‑ups / polish hooks (disabled by default)
+# ###############################################
+
+# # You can fire this to the absorbed shell to clean up diplomacy, subjects, etc., if desired.
+# # country_event = {
+# #   id = MUTHUR.4130
+# #   hide_window = yes
+# #   is_triggered_only = yes
+# #   immediate = {
+# #     # Example cleanups (adjust to taste):
+# #     # leave_federation = this
+# #     # end_rivalries_effect = yes
+# #     # set_subject_of = none
+# #   }
+# # }

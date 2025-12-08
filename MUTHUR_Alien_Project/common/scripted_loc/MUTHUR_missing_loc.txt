@@ -1,0 +1,135 @@
+# Each returns its line key if the country has the matching "missing" flag; otherwise returns "".
+# Used by [Root.GetMUTHURMissingLine...] in the event description.
+
+defined_text = {
+    name = GetMUTHURMissingLineSol
+    random = no
+    text = { localization_key = MUTHUR_missing_line_sol trigger = { has_country_flag = MUTHUR_missing_sol } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineKapteyns
+    random = no
+    text = { localization_key = MUTHUR_missing_line_kapteyns trigger = { has_country_flag = MUTHUR_missing_kapteyns } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineAG4550
+    random = no
+    text = { localization_key = MUTHUR_missing_line_ag4550 trigger = { has_country_flag = MUTHUR_missing_ag4550 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineAlphaCentauri
+    random = no
+    text = { localization_key = MUTHUR_missing_line_alpha_centauri trigger = { has_country_flag = MUTHUR_missing_alpha_centauri } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineBarnards
+    random = no
+    text = { localization_key = MUTHUR_missing_line_barnards trigger = { has_country_flag = MUTHUR_missing_barnards } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineCygni
+    random = no
+    text = { localization_key = MUTHUR_missing_line_cygni trigger = { has_country_flag = MUTHUR_missing_cygni } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineLalande
+    random = no
+    text = { localization_key = MUTHUR_missing_line_lalande trigger = { has_country_flag = MUTHUR_missing_lalande } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineTauCeti
+    random = no
+    text = { localization_key = MUTHUR_missing_line_tau_ceti trigger = { has_country_flag = MUTHUR_missing_tau_ceti } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineKruger
+    random = no
+    text = { localization_key = MUTHUR_missing_line_kruger trigger = { has_country_flag = MUTHUR_missing_kruger } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineGJ1232
+    random = no
+    text = { localization_key = MUTHUR_missing_line_gj1232 trigger = { has_country_flag = MUTHUR_missing_gj1232 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineGJ667
+    random = no
+    text = { localization_key = MUTHUR_missing_line_gj667 trigger = { has_country_flag = MUTHUR_missing_gj667 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineHeske337
+    random = no
+    text = { localization_key = MUTHUR_missing_line_heske337 trigger = { has_country_flag = MUTHUR_missing_heske337 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLinePOL5362
+    random = no
+    text = { localization_key = MUTHUR_missing_line_pol5362 trigger = { has_country_flag = MUTHUR_missing_pol5362 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineAlphaFornacis
+    random = no
+    text = { localization_key = MUTHUR_missing_line_alpha_fornacis trigger = { has_country_flag = MUTHUR_missing_alpha_fornacis } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineBetaCanum
+    random = no
+    text = { localization_key = MUTHUR_missing_line_beta_canum trigger = { has_country_flag = MUTHUR_missing_beta_canum } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineZetaDoradus
+    random = no
+    text = { localization_key = MUTHUR_missing_line_zeta_doradus trigger = { has_country_flag = MUTHUR_missing_zeta_doradus } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineTycho2
+    random = no
+    text = { localization_key = MUTHUR_missing_line_tycho2 trigger = { has_country_flag = MUTHUR_missing_tycho2 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineNN3346
+    random = no
+    text = { localization_key = MUTHUR_missing_line_nn3346 trigger = { has_country_flag = MUTHUR_missing_nn3346 } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineAlphaCaeli
+    random = no
+    text = { localization_key = MUTHUR_missing_line_alpha_caeli trigger = { has_country_flag = MUTHUR_missing_alpha_caeli } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineZeta2Ret
+    random = no
+    text = { localization_key = MUTHUR_missing_line_zeta2_ret trigger = { has_country_flag = MUTHUR_missing_zeta2_ret } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineEpsilonRet
+    random = no
+    text = { localization_key = MUTHUR_missing_line_epsilon_ret trigger = { has_country_flag = MUTHUR_missing_epsilon_ret } }
+    default = ""
+}
+defined_text = {
+    name = GetMUTHURMissingLineZeta1Ret
+    random = no
+    text = { localization_key = MUTHUR_missing_line_zeta1_ret trigger = { has_country_flag = MUTHUR_missing_zeta1_ret } }
+    default = ""
+}

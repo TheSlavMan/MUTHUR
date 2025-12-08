@@ -1,0 +1,122 @@
+# namespace = MUTHUR
+
+# ############################################
+# # Setup — wire rivals, save targets, create federation (4.x-safe)
+# ############################################
+
+# country_event = {
+  # id = MUTHUR.4000
+  # hide_window = yes
+  # is_triggered_only = yes
+
+  # immediate = {
+    # # --- Resolve corporate empires by flags (preferred), else by name contains ---
+    # # Weyland
+    # if = {
+      # limit = { NOT = { has_country_flag = MUTHUR_is_weyland } }
+      # random_country = {
+        # limit = {
+          # OR = {
+            # has_country_flag = MUTHUR_is_weyland
+            # name = { contains = "Weyland" }
+          # }
+        # }
+        # save_event_target_as = MUTHUR_weyland_empire
+      # }
+    # }
+    # # Yutani
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_yutani_empire } }
+      # random_country = {
+        # limit = {
+          # OR = {
+            # has_country_flag = MUTHUR_is_yutani
+            # name = { contains = "Yutani" }
+          # }
+        # }
+        # save_event_target_as = MUTHUR_yutani_empire
+      # }
+    # }
+    # # Seegson
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_seegson_empire } }
+      # random_country = {
+        # limit = {
+          # OR = {
+            # has_country_flag = MUTHUR_is_seegson
+            # name = { contains = "Seegson" }
+          # }
+        # }
+        # save_event_target_as = MUTHUR_seegson_empire
+      # }
+    # }
+    # # LaSalle
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_lasalle_empire } }
+      # random_country = {
+        # limit = {
+          # OR = {
+            # has_country_flag = MUTHUR_is_lasalle
+            # name = { contains = "LaSalle" }
+          # }
+        # }
+        # save_event_target_as = MUTHUR_lasalle_empire
+      # }
+    # }
+
+    # # --- Cache LV-223 moon/system targets if present in galaxy ---
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_lv223_moon } }
+      # random_galaxy_planet = {
+        # limit = { has_planet_flag = MUTHUR_lv223_moon }
+        # save_event_target_as = MUTHUR_lv223_moon
+        # solar_system = { save_event_target_as = MUTHUR_lv223_system }
+      # }
+    # }
+
+    # # --- Set rival for the current country (only if we're one of the corps) ---
+    # if = {
+      # limit = { has_country_flag = MUTHUR_is_weyland }
+      # if = {
+        # limit = { exists = event_target:MUTHUR_yutani_empire }
+        # event_target:MUTHUR_yutani_empire = { save_event_target_as = MUTHUR_rival_empire }
+      # }
+    # }
+    # if = {
+      # limit = { has_country_flag = MUTHUR_is_yutani }
+      # if = {
+        # limit = { exists = event_target:MUTHUR_weyland_empire }
+        # event_target:MUTHUR_weyland_empire = { save_event_target_as = MUTHUR_rival_empire }
+      # }
+    # }
+
+    # # --- Create Trade League federation (once), led by Weyland, add the others ---
+    # if = {
+      # limit = {
+        # NOT = { has_global_flag = MUTHUR_corp_fed_created }
+        # exists = event_target:MUTHUR_weyland_empire
+        # exists = event_target:MUTHUR_yutani_empire
+      # }
+
+      # set_global_flag = MUTHUR_corp_fed_created
+
+      # # Create federation from within Weyland's scope
+      # event_target:MUTHUR_weyland_empire = {
+        # create_federation = { type = trade_league }
+        # # Now in Weyland scope, use federation = { ... } to reach the federation scope
+        # federation = {
+          # # Add members via block syntax (4.x)
+          # add_federation_member = { who = event_target:MUTHUR_yutani_empire }
+          # if = {
+            # limit = { exists = event_target:MUTHUR_seegson_empire }
+            # add_federation_member = { who = event_target:MUTHUR_seegson_empire }
+          # }
+          # if = {
+            # limit = { exists = event_target:MUTHUR_lasalle_empire }
+            # add_federation_member = { who = event_target:MUTHUR_lasalle_empire }
+          # }
+        # }
+      # }
+    # }
+  # }
+# }

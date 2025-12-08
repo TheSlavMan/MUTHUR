@@ -1,0 +1,26 @@
+# # ===== MUTHUR planet modifiers (wrappers that reference static modifiers) =====
+
+# pm_lv223_strange_signals = {
+    # # By default only applied via events; no random rolling
+    # spawn_chance = { }  # leave empty or comment out entirely
+
+    # # Point to the static modifier above
+    # modifier = "MUTHUR_strange_signals_mod"
+# }
+
+# # Keep these names matching your event scripts (no need for 'pm_' prefix)
+# muthur_infest_stage1 = {
+    # modifier = "MUTHUR_infest_stage1_mod"
+# }
+
+# muthur_infest_stage2 = {
+    # modifier = "MUTHUR_infest_stage2_mod"
+# }
+
+# muthur_infest_stage3 = {
+    # modifier = "MUTHUR_infest_stage3_mod"
+# }
+
+# muthur_infest_aftermath = {
+    # modifier = "MUTHUR_infest_aftermath_mod"
+# }

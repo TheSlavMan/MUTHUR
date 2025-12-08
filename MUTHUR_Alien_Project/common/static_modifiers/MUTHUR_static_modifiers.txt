@@ -1,0 +1,69 @@
+# # ==============================
+# # MUTHUR Static Modifiers
+# # ==============================
+
+# # Temporary relic-style boost used by events (safe placeholder)
+# MUTHUR_relic_temp_boost = {
+	# # Keep this conservative; you can tune in testing
+	# all_technology_research_speed = 0.05
+	# country_unity_produces_mult = 0.10
+# }
+
+# # Country-wide awareness when Strange Signals are being studied (if needed)
+# MUTHUR_strange_signals_country = {
+	# intel_encryption_mult = 0.10
+# }
+
+# # Ship buff used if you want to give expedition vessels a nudge (optional)
+# MUTHUR_expedition_ready = {
+	# ship_anomaly_research_speed_mult = 0.20
+	# ship_archaeological_site_excavation_speed_mult = 0.20
+# }
+
+# MUTHUR_strange_signals_mod = {
+    # # Subtle colony maluses
+    # planet_stability_add = -10
+    # planet_crime_add = 10
+    # logistic_growth_mult = -0.10
+    # planet_jobs_produces_mult = -0.10
+
+    # # Icon
+    # icon = "gfx/interface/icons/planet_modifiers/pm_planet_from_space.dds"
+    # icon_frame = 2
+# }
+
+# MUTHUR_infest_stage1_mod = {
+    # planet_crime_add = 15
+    # planet_amenities_mult = -0.05
+
+    # icon = "gfx/interface/icons/planet_modifiers/pm_unknown.dds"
+    # icon_frame = 1
+# }
+
+# MUTHUR_infest_stage2_mod = {
+    # planet_stability_add = -10
+    # planet_jobs_produces_mult = -0.10
+    # logistic_growth_mult = -0.25
+
+    # icon = "gfx/interface/icons/planet_modifiers/pm_unknown.dds"
+    # icon_frame = 2
+# }
+
+# MUTHUR_infest_stage3_mod = {
+    # planet_stability_add = -20
+    # planet_jobs_upkeep_mult = 0.15
+    # planet_jobs_produces_mult = -0.25
+    # planet_crime_add = 40
+
+    # icon = "gfx/interface/icons/planet_modifiers/pm_unrest.dds"
+    # icon_frame = 3
+# }
+
+# MUTHUR_infest_aftermath_mod = {
+    # planet_stability_add = -5
+    # planet_amenities_mult = -0.05
+
+    # icon = "gfx/interface/icons/planet_modifiers/pm_wasteland.dds"
+    # icon_frame = 2
+# }
+

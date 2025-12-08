@@ -1,0 +1,159 @@
+# namespace = MUTHUR
+
+# ###############################################
+# # Xenomorph Infestation Event Chain (split 2005/2006)
+# ###############################################
+
+# # Stage 1 — Strange reports begin
+# planet_event = {
+  # id = MUTHUR.2000
+  # title = "MUTHUR_infest_stage1_title"
+  # desc = "MUTHUR_infest_stage1_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # trigger = { has_planet_modifier = pm_lv223_strange_signals }
+  # immediate = {
+    # add_modifier = { modifier = muthur_infest_stage1 days = 720 }
+  # }
+  # option = { name = "MUTHUR_note_findings" }
+# }
+
+# # Stage 2 — Colonists vanish
+# planet_event = {
+  # id = MUTHUR.2001
+  # title = "MUTHUR_infest_stage2_title"
+  # desc = "MUTHUR_infest_stage2_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # trigger = { has_modifier = muthur_infest_stage1 }
+  # immediate = {
+    # remove_modifier = muthur_infest_stage1
+    # add_modifier = { modifier = muthur_infest_stage2 days = 720 }
+    # random_owned_pop = { kill_pop = yes }
+  # }
+  # option = { name = "MUTHUR_keep_order" }
+# }
+
+# # Stage 3 — Outbreak
+# planet_event = {
+  # id = MUTHUR.2002
+  # title = "MUTHUR_infest_stage3_title"
+  # desc = "MUTHUR_infest_stage3_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # trigger = { has_modifier = muthur_infest_stage2 }
+  # immediate = {
+    # remove_modifier = muthur_infest_stage2
+    # add_modifier = { modifier = muthur_infest_stage3 days = -1 }
+    # spawn_army = { owner = root type = MUTHUR_xeno_army count = 3 }
+  # }
+  # option = { name = "MUTHUR_far_worse" }
+# }
+
+# # Mitigation attempt (fires via decision / option)
+# planet_event = {
+  # id = MUTHUR.2003
+  # title = "MUTHUR_infest_reveal_title"
+  # desc = "MUTHUR_infest_reveal_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # option = {
+    # name = "MUTHUR_militia"
+    # hidden_effect = {
+      # if = { limit = { check_variable = { which = infestation_roll value > 0.25 } }
+        # remove_modifier = muthur_infest_stage3
+        # owner = { country_event = { id = MUTHUR.2004 } }
+      # }
+      # else = {
+        # spawn_army = { owner = root type = MUTHUR_xeno_army count = 5 }
+      # }
+    # }
+  # }
+  # option = {
+    # name = "MUTHUR_orbital"
+    # resources = { alloys = 500 energy = 500 }
+    # hidden_effect = {
+      # if = { limit = { check_variable = { which = infestation_roll value > 0.25 } }
+        # remove_modifier = muthur_infest_stage3
+        # owner = { country_event = { id = MUTHUR.2004 } }
+      # }
+      # else = {
+        # spawn_army = { owner = root type = MUTHUR_xeno_army count = 10 }
+      # }
+    # }
+  # }
+# }
+
+# # Success
+# country_event = {
+  # id = MUTHUR.2004
+  # title = "MUTHUR_infest_success_title"
+  # desc = "MUTHUR_infest_success_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # option = {
+    # name = "MUTHUR_pyrrhic"
+    # hidden_effect = {
+      # # Remove the outbreak modifier from any owned planet that has it (safety sweep)
+      # every_owned_planet = {
+        # limit = { has_modifier = muthur_infest_stage3 }
+        # remove_modifier = muthur_infest_stage3
+      # }
+    # }
+  # }
+# }
+
+# # Failure trigger — infestation overruns colony (PLANET SCOPE)
+# planet_event = {
+  # id = MUTHUR.2005
+  # title = "MUTHUR_infest_fail_title"
+  # desc  = "MUTHUR_infest_fail_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # trigger = { has_modifier = muthur_infest_stage3 }
+
+  # immediate = {
+    # # Save this planet, then call the country-scope flipper on the current owner
+    # save_event_target_as = MUTHUR_overrun_planet
+    # owner = { country_event = { id = MUTHUR.2006 } }
+  # }
+
+  # option = { name = OK }
+# }
+
+# # Country-side flipper — creates hive if needed and takes the planet (COUNTRY SCOPE)
+# country_event = {
+  # id = MUTHUR.2006
+  # hide_window = yes
+  # is_triggered_only = yes
+
+  # immediate = {
+    # # Create hive country if it doesn’t already exist
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_xeno_hive } }
+      # create_country = {
+        # name = "MUTHUR_xeno_hive"
+        # type = default
+        # authority = auth_hive_mind
+        # civics = { civic_hive_devouring_swarm }
+        # ethos = { ethic_gestalt_consciousness }
+        # set_graphical_culture = mammalian_01
+        # set_ship_prefix = "XENO"
+        # save_event_target_as = MUTHUR_xeno_hive   # <-- safe in 4.x
+      # }
+    # }
+
+    # # Flip planet to hive control
+    # if = {
+      # limit = { exists = event_target:MUTHUR_overrun_planet }
+      # event_target:MUTHUR_overrun_planet = {
+        # set_owner = event_target:MUTHUR_xeno_hive
+        # add_army = {
+          # owner = event_target:MUTHUR_xeno_hive
+          # type = defense_army
+          # count = 3
+        # }
+      # }
+    # }
+  # }
+# }

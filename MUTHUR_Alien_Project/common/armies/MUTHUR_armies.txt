@@ -1,0 +1,9 @@
+# MUTHUR_xeno_army = {
+  # damage = 2.0
+	# morale_damage = 2.0
+	# health = 2.0
+	# has_morale = no
+	# time = 180
+	# icon = GFX_army_type_xenomorph
+	# has_species = no
+# }

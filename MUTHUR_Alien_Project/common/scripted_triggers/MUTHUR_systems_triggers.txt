@@ -1,0 +1,35 @@
+MUTHUR_system_present = {
+	# parameter: flag = <system_flag_to_search>
+	parameters = { flag }
+	OR = {
+		any_system = { has_star_flag   = parameter:flag }
+		any_system = { has_system_flag = parameter:flag }
+	}
+}
+
+MUTHUR_any_missing_required_systems = {
+	OR = {
+		has_country_flag = MUTHUR_missing_sol
+		has_country_flag = MUTHUR_missing_kapteyns
+		has_country_flag = MUTHUR_missing_ag4550
+		has_country_flag = MUTHUR_missing_alpha_centauri
+		has_country_flag = MUTHUR_missing_barnards
+		has_country_flag = MUTHUR_missing_cygni
+		has_country_flag = MUTHUR_missing_lalande
+		has_country_flag = MUTHUR_missing_tau_ceti
+		has_country_flag = MUTHUR_missing_kruger
+		has_country_flag = MUTHUR_missing_gj1232
+		has_country_flag = MUTHUR_missing_gj667
+		has_country_flag = MUTHUR_missing_heske337
+		has_country_flag = MUTHUR_missing_pol5362
+		has_country_flag = MUTHUR_missing_alpha_fornacis
+		has_country_flag = MUTHUR_missing_beta_canum
+		has_country_flag = MUTHUR_missing_zeta_doradus
+		has_country_flag = MUTHUR_missing_tycho2
+		has_country_flag = MUTHUR_missing_nn3346
+		has_country_flag = MUTHUR_missing_alpha_caeli
+		has_country_flag = MUTHUR_missing_zeta2_ret
+		has_country_flag = MUTHUR_missing_epsilon_ret
+		has_country_flag = MUTHUR_missing_zeta1_ret
+	}
+}

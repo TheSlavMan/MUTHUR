@@ -1,0 +1,278 @@
+namespace = MUTHUR
+
+#################################################
+# MUTHUR Base Events
+#################################################
+
+# Check if all custom defined systems spawn
+country_event = {
+  id = MUTHUR.1
+  hide_window = yes
+	is_triggered_only = yes
+  trigger = { is_ai = no }
+
+  immediate = {
+      log = "MUTHUR: Performing system spawn check"
+
+      MUTHUR_clear_missing_flags = yes
+      MUTHUR_check_all_required_systems = yes
+
+      if = {
+          limit = { has_country_flag = MUTHUR_missing_any }
+          country_event = { id = MUTHUR.2 days = 1 }
+      }
+  }
+}
+
+# Systems missing message
+country_event = {
+    id = MUTHUR.2
+    is_triggered_only = yes
+    title = MUTHUR_missing_title
+    desc  = MUTHUR_missing_desc
+    picture = GFX_evt_supernova
+    show_sound = event_default
+
+    option = { name = OK }
+}
+
+# Base game setup
+country_event = {
+  id = MUTHUR.3
+  hide_window = yes
+  is_triggered_only = yes
+
+  immediate = {
+    # Setup yutani home and establish comms
+    if = {
+      limit = { has_country_flag = MUTHUR_empire_yutani }
+      log = "MUTHUR: Starting yutani home planet setup"
+      capital_scope = {
+        MUTHUR_yutani_home_planet_setup = yes
+      }
+      random_country = {
+        limit = { has_country_flag = MUTHUR_empire_weyland }
+        log = "MUTHUR: Establishing communications with Yutani"
+        establish_communications_no_message = event_target:npc_Yutani
+      }
+    }
+    # Setup the federation
+    if = {
+      limit = { has_country_flag = MUTHUR_empire_weyland }
+      log = "MUTHUR: Forming federation"
+      join_alliance = {
+        who = event_target:npc_Yutani
+        name = "Interstellar Commerce Commission"
+        override_requirements = yes
+      }
+      set_federation_leader = this
+      federation = {
+        set_federation_flag = icc_federation
+        set_federation_type = trade_federation
+        add_cohesion = 250
+        add_federation_experience = 10000
+        set_federation_law = centralization_high
+        set_federation_law = fleet_contribution_none
+        set_federation_law = succession_type_strongest
+        set_federation_law = succession_power_economy
+        set_federation_law = succession_term_status_change
+        set_federation_law = free_migration_yes
+        set_federation_law = treaties_separate_no
+      }
+    }
+  }
+}
+
+
+# ### Engineer Precursor Introduction
+# # Game start: seed the Scotland archaeology site on the capital world
+# country_event = {
+  # id = MUTHUR.100
+  # hide_window = yes
+  # is_triggered_only = yes
+  # immediate = {
+    # capital_scope = {
+      # create_archaeological_site = muthur_scotland_digsite
+      # set_planet_flag = MUTHUR_scotland_ready
+    # }
+  # }
+# }
+
+# # Scotland site finished ⇒ present funding step and create Dispatch special project
+# country_event = {
+  # id = MUTHUR.101
+  # title = "MUTHUR_scotland_2_title"
+  # desc = "MUTHUR_scotland_2_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # location = capital_scope
+  # option = {
+    # name = "MUTHUR_scotland_fund"
+    # custom_tooltip = "MUTHUR_scotland_fund_tt"
+    # hidden_effect = {
+      # create_special_project = {
+        # name = MUTHUR_lv223_dispatch
+        # location = capital_scope
+      # }
+    # }
+  # }
+  # option = {
+    # name = CANCEL
+  # }
+# }
+
+# # Helper: locate LV-223 moon; prefer prepared event target, otherwise search
+# country_event = {
+  # id = MUTHUR.102
+  # hide_window = yes
+  # is_triggered_only = yes
+  # immediate = {
+    # if = {
+      # limit = { exists = event_target:MUTHUR_lv223_moon }
+      # save_event_target_as = MUTHUR_lv223_moon_cached
+    # }
+    # else = {
+      # if = {
+        # limit = { exists = event_target:MUTHUR_lv223_system }
+        # event_target:MUTHUR_lv223_system = {
+          # random_system_planet = {
+            # limit = { has_planet_flag = MUTHUR_lv223_moon }
+            # save_event_target_as = MUTHUR_lv223_moon_cached
+          # }
+        # }
+      # }
+      # else = {
+        # # Fallback galaxy search: pick one flagged planet at random
+        # random_galaxy_planet = {
+          # limit = { has_planet_flag = MUTHUR_lv223_moon }
+          # save_event_target_as = MUTHUR_lv223_moon_cached
+        # }
+      # }
+    # }
+  # }
+# }
+
+# # Dispatch project completed ⇒ victor spawns the LV-223 dig; others get a consolation message
+# country_event = {
+  # id = MUTHUR.103
+  # title = "MUTHUR_lv223_c1_title"
+  # desc = "MUTHUR_lv223_c1_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # location = capital_scope
+  # immediate = {
+    # # Ensure we know which planet is the LV-223 moon
+    # country_event = { id = MUTHUR.102 }
+  # }
+  # trigger = {
+    # # Only the first finisher should claim the digsite
+    # NOT = { has_global_flag = MUTHUR_lv223_claimed }
+  # }
+  # option = {
+    # name = "MUTHUR_begin_surface_exp"
+    # hidden_effect = {
+      # set_global_flag = MUTHUR_lv223_claimed
+      # event_target:MUTHUR_lv223_moon_cached = {
+        # create_archaeological_site = muthur_lv223_digsite
+        # set_planet_flag = MUTHUR_lv223_active
+      # }
+      # # Notify potential rival (Yutani <-> Weyland)
+      # if = {
+        # limit = { exists = event_target:MUTHUR_rival_empire }
+        # event_target:MUTHUR_rival_empire = { country_event = { id = MUTHUR.104 } }
+      # }
+    # }
+  # }
+# }
+
+# # Loser ping (if someone else claimed LV-223 first)
+# country_event = {
+  # id = MUTHUR.104
+  # title = "MUTHUR_lv223_loser_title"
+  # desc = "MUTHUR_lv223_loser_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # option = {
+    # name = "MUTHUR_unfortunate"
+    # hidden_effect = { add_resource = { influence = 100 } }
+  # }
+# }
+
+# # LV-223 dig completed ⇒ make colonizable and add Strange Signals; seed later logs retrieval
+# country_event = {
+  # id = MUTHUR.105
+  # title = "MUTHUR_lv223_final_title"
+  # desc = "MUTHUR_lv223_final_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # location = event_target:MUTHUR_lv223_moon_cached
+  # immediate = {
+    # # Ensure cached target exists (in case this was called directly from on_action)
+    # if = {
+      # limit = { NOT = { exists = event_target:MUTHUR_lv223_moon_cached } }
+      # country_event = { id = MUTHUR.102 }
+    # }
+    # if = {
+      # limit = { exists = event_target:MUTHUR_lv223_moon_cached }
+      # event_target:MUTHUR_lv223_moon_cached = {
+        # set_colonizable = yes
+        # add_modifier = { modifier = pm_lv223_strange_signals days = -1 }
+        # set_planet_flag = MUTHUR_lv223_logs_pending
+      # }
+      # # Schedule logs follow-up in ~1 year
+      # country_event = { id = MUTHUR.106 days = 360 }
+    # }
+  # }
+  # option = {
+    # name = FASCINATING
+  # }
+# }
+
+# # Lost logs follow-up: if colonized, deliver logs to colony owner; if not, create a pickup special project
+# country_event = {
+  # id = MUTHUR.106
+  # title = "MUTHUR_logs_title"
+  # desc = "MUTHUR_logs_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # location = event_target:MUTHUR_lv223_moon_cached
+  # trigger = { exists = event_target:MUTHUR_lv223_moon_cached }
+  # option = {
+    # name = "MUTHUR_archive_logs"
+    # hidden_effect = {
+      # if = {
+        # limit = { event_target:MUTHUR_lv223_moon_cached = { has_owner = yes } }
+        # # Planet is colonized: show a colony event to the owner
+        # event_target:MUTHUR_lv223_moon_cached = {
+          # planet_event = { id = MUTHUR.107 }
+        # }
+      # }
+      # else = {
+        # # Planet is uncolonized: create a recover-logs special project at the planet
+        # event_target:MUTHUR_lv223_moon_cached = {
+          # create_special_project = {
+            # name = MUTHUR_lv223_logs
+            # location = this
+          # }
+        # }
+      # }
+    # }
+  # }
+# }
+
+# # Colony-side logs reveal (fires for the colony owner)
+# planet_event = {
+  # id = MUTHUR.107
+  # title = "MUTHUR_logs_title"
+  # desc = "MUTHUR_logs_colony_desc"
+  # picture = GFX_evt_overgrown_city
+  # is_triggered_only = yes
+  # pre_triggers = { has_owner = yes }
+  # trigger = { has_planet_flag = MUTHUR_lv223_logs_pending }
+  # immediate = {
+    # remove_planet_flag = MUTHUR_lv223_logs_pending
+  # }
+  # option = {
+    # name = ACKNOWLEDGED
+  # }
+# }

@@ -1,0 +1,11 @@
+MUTHUR_weyland_flags = {
+	flags = { MUTHUR_empire_weyland }
+}
+
+MUTHUR_seegson_flags = {
+	flags = { MUTHUR_empire_seegson }
+}
+
+MUTHUR_yutani_flags = {
+	flags = { MUTHUR_empire_yutani }
+}
