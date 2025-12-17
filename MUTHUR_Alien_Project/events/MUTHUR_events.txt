@@ -56,10 +56,25 @@ country_event = {
         establish_communications_no_message = event_target:npc_Yutani
       }
     }
+
+    # Setup seegson home and establish comms
+    if = {
+      limit = { has_country_flag = MUTHUR_empire_seegson }
+      log = "MUTHUR: Starting seegson home planet setup"
+      capital_scope = {
+        MUTHUR_seegson_home_planet_setup = yes
+      }
+      random_country = {
+        limit = { has_country_flag = MUTHUR_empire_weyland }
+        log = "MUTHUR: Establishing communications with Seegson"
+        establish_communications_no_message = event_target:npc_Seegson
+      }
+    }
+
     # Setup the federation
     if = {
       limit = { has_country_flag = MUTHUR_empire_weyland }
-      log = "MUTHUR: Forming federation"
+      log = "MUTHUR: Forming federation with Yutani"
       join_alliance = {
         who = event_target:npc_Yutani
         name = "Interstellar Commerce Commission"
@@ -67,7 +82,7 @@ country_event = {
       }
       set_federation_leader = this
       federation = {
-        set_federation_flag = icc_federation
+        set_federation_flag = MUTHUR_icc_federation
         set_federation_type = trade_federation
         add_cohesion = 250
         add_federation_experience = 10000
@@ -78,6 +93,14 @@ country_event = {
         set_federation_law = succession_term_status_change
         set_federation_law = free_migration_yes
         set_federation_law = treaties_separate_no
+      }
+      random_country = {
+        limit = { has_country_flag = MUTHUR_empire_seegson }
+        log = "MUTHUR: Adding Seegson to federation"
+        join_alliance = {
+          who = prev
+          override_requirements = yes
+        }
       }
     }
   }

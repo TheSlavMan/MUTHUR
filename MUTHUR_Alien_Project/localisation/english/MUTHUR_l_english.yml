@@ -97,6 +97,7 @@
   MUTHUR_Epsilon_Reticuli_System_Name:0 "Epsilon Reticuli"
   MUTHUR_Akatsuki_Planet_Name:0 "Akatsuki Station"
   MUTHUR_Koryo_Planet_Name:0 "Koryo"
+  MUTHUR_Hannover_Planet_Name:0 "New Hannover"
 
   # System Spawn Check
   MUTHUR_missing_title:0 "Missing Custom Systems Detected"

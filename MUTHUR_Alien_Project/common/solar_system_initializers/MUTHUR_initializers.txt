@@ -1501,14 +1501,116 @@ MUTHUR_lalande_system = {
 		}
 	}
 
-	# --- Far cold world (terraformable later via tech, not at start) ---
+	# --- Seegson start habitat ---
 	planet = {
 		name = "Persephone"
-		class = pc_frozen
-		orbit_distance = 25
-		orbit_angle = { min = 0 max = 360 }
+		class = "pc_barren_cold"
+		orbit_distance = 30
+		orbit_angle = { min = 45 max = 220 }
 		size = { min = 11 max = 14 }
-		has_ring = no
+		flags = { MUTHUR_seegson_habitat_planet has_megastructure }
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = { modifier = terraforming_candidate days = -1 }
+		}
+
+		moon = {
+			name = "MUTHUR_Hannover_Planet_Name"
+			class = "pc_habitat"
+			orbit_distance = 12
+			orbit_angle = 40
+			size = 6
+			deposit_blockers = none
+			flags = { MUTHUR_seegson_capital special_start_planet megastructure habitat habitat_level_1 }
+			init_effect = {
+				log = "MUTHUR: Generating Seegson"
+
+				prevent_anomaly = yes
+				save_global_event_target_as = MUTHUR_system_hannover
+
+				create_species = {
+					name = NAME_Human
+					plural = NAME_Human_plural
+					class = "HUM"
+					portrait = "human"
+					homeworld = THIS
+					traits = {
+						trait = "trait_adaptive"
+						trait = "trait_nomadic"
+					}
+				}
+				last_created_species = {
+					save_global_event_target_as = MUTHUR_seegson_species
+				}
+				create_country = {
+					name = "Seegson"
+					adjective = "Seegson"
+					authority = auth_corporate
+					civics = {
+						civic = civic_brand_loyalty
+						civic = civic_private_prospectors
+					}
+					species = event_target:MUTHUR_seegson_species
+					name_list = "HUMAN2"
+					ship_prefix = "USCSS"
+					ethos = {
+						ethic = "ethic_authoritarian"
+						ethic = "ethic_xenophile"
+						ethic = "ethic_materialist"
+					}
+					flag = {
+						icon = {
+							category = "corporate"
+							file = "corporate_seegson.dds"
+						}
+						background = {
+							category = "backgrounds"
+							file = "00_solid.dds"
+						}
+						colors = {
+							"yellow"
+							"yellow"
+							"null"
+							"null"
+						}
+					}
+					type = default
+					origin = "origin_default"
+					effect = {
+						save_global_event_target_as = npc_Seegson
+						set_country_flag = MUTHUR_empire_seegson
+						create_leader = {
+							class = official
+							species = event_target:npc_Seegson
+							name = "Josiah Sieg"
+							gender = male
+						}
+						while = {
+							count = 3
+							create_leader = {
+								class = scientist
+								species = event_target:npc_Seegson
+							}
+						}
+						give_technology = {
+							tech = tech_habitat_1
+							message = no
+						}
+						add_research_option = tech_habitat_2
+					}
+				}
+				create_colony = {
+					owner = event_target:npc_Seegson
+					species = event_target:MUTHUR_seegson_species
+				}
+				create_pop_group = {
+					size = 1500
+					species = event_target:MUTHUR_seegson_species
+				}
+				set_name = "MUTHUR_Hannover_Planet_Name"
+			}
+		}
 	}
 
 	# --- Outer rubble / Kuiper-ish ---
@@ -1520,6 +1622,15 @@ MUTHUR_lalande_system = {
 		size = 5
 		init_effect = {
 			add_deposit = d_energy_2
+		}
+	}
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:npc_Seegson
 		}
 	}
 }
