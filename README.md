@@ -3,7 +3,7 @@
 **MUTHUR** is an expansive Stellaris mod that aims to bring the *Alien / Prometheus* extended universe into the Stellaris sandbox.  
 This project aims to unify lore from films, novels, comics, games, and official reference guides into a coherent and playable Stellaris experience.
 
-<img alt="image" src="https://github.com/user-attachments/assets/e9e4a4fe-aa0a-4d89-a92c-e2774e99db3e" />
+<img width="605" height="602" alt="image" src="https://github.com/user-attachments/assets/bcc1fcd2-20b7-43e8-b367-d16cadc420db" />
 
 
 ## 📖 Project Goals
