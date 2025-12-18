@@ -129,17 +129,14 @@
   MUTHUR_weyland_terraform_start_title:0 "Insight into Terraforming"
   MUTHUR_weyland_terraform_start_desc:0 "Weyland R&D would like to look into environmental manipulation prototypes."
   MUTHUR_weyland_terraform_title:0 "Project: Proactive Terraforming"
-  MUTHUR_weyland_terraform_desc:0 "Weyland R&D channels engineering resources into environmental manipulation prototypes. Preliminary results accelerate breakthroughs in [GetEngineerResearchName]."
+  MUTHUR_weyland_terraform_desc:0 "Weyland R&D channels engineering resources into environmental manipulation prototypes. Preliminary results accelerate breakthroughs in [tech_terrestrial_sculpting]."
   MUTHUR_steal_terraform_title:0 "Acquired Data: Terraforming Methods"
   MUTHUR_steal_terraform_desc:0 "Recovered Weyland research fragments enable accelerated study toward early terraforming capability."
   MUTHUR_WEYLAND_TERRAFORMING_PUSH:0 "Project: Terraforming Initiative"
   MUTHUR_WEYLAND_TERRAFORMING_PUSH_DESC:0 "The Weyland Corporation has green-lit an ambitious research program focused on controlled environmental engineering. Vast engineering resources are being redirected into atmospheric processors, climate simulation models, and planetary-scale terraforming prototypes. If successful, this program will accelerate our mastery of reshaping alien worlds to human needs."
   MUTHUR_CORP_TERRAFORMING_HEIST:0 "Operation: Research Acquisition"
-  MUTHUR_CORP_TERRAFORMING_HEIST_DESC:0 "Weyland’s breakthrough in terraforming technology has not gone unnoticed. Our intelligence divisions have prepared covert operations to infiltrate corporate networks and acquire their hard-won research. With the right application of engineering resources and espionage, we may replicate their progress and secure parity in the race for planetary transformation."
+  MUTHUR_CORP_TERRAFORMING_HEIST_DESC:0 "Weyland's breakthrough in terraforming technology has not gone unnoticed. Our intelligence divisions have prepared covert operations to infiltrate corporate networks and acquire their hard-won research. With the right application of engineering resources and espionage, we may replicate their progress and secure parity in the race for planetary transformation."
   MUTHUR_terraform_heist_start_title:0 "Operation: Terraforming Data Heist"
-  MUTHUR_terraform_heist_start_desc:0 "Weyland’s accelerated research program into planetary engineering has yielded valuable breakthroughs. Our analysts believe that, with sufficient investment in covert operations and engineering expertise, we can infiltrate their data archives and copy critical schematics. Success would allow us to match their advances in terraforming technology—and deny them a decisive corporate edge."
-
-
-
-
-
+  MUTHUR_terraform_heist_start_desc:0 "Weyland's accelerated research program into planetary engineering has yielded valuable breakthroughs. Our analysts believe that, with sufficient investment in covert operations and engineering expertise, we can infiltrate their data archives and copy critical schematics. Success would allow us to match their advances in terraforming technology—and deny them a decisive corporate edge."
+  MUTHUR_tech_security_breach_title:0 "Unauthorized Use of Weyland Technology"
+  MUTHUR_tech_security_breach_desc:0 "Weyland Corporate Security has confirmed that proprietary terraforming technology has been obtained by an external party without authorization. The material in question originates from restricted research programs and was never approved for independent or third-party deployment.\n\nAn internal review is currently underway to determine the scope of the breach and identify points of compromise. All divisions in possession of related data have been instructed to enforce immediate access restrictions and suspend discretionary research sharing.\n\nSenior leadership has been briefed. Any unlicensed application of Weyland-Yutani intellectual property will be treated as a hostile infringement and addressed in accordance with corporate policy."

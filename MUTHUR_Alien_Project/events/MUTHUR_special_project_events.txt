@@ -146,6 +146,31 @@ country_event = {
         add_research_option = tech_terrestrial_sculpting
         add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.50 } # mirror Weyland's boost
         set_country_flag = MUTHUR_corp_terraforming_heist_completed
+        every_country = {
+            limit = {
+                AND = { 
+                    has_country_flag = MUTHUR_empire_weyland
+                    NOT = { has_country_flag = MUTHUR_weyland_terraforming_stolen }
+                }
+            }
+            country_event = { id = MUTHUR.1006 }
+        }
+    }
+
+    option = { name = OK }
+}
+
+# Notify Weyland that their technology was stolen
+country_event = {
+    id = MUTHUR.1006
+    title = MUTHUR_tech_security_breach_title
+    desc  = MUTHUR_tech_security_breach_desc
+    picture = GFX_evt_spymaster
+    is_triggered_only = yes
+
+    immediate = {
+        log = "MUTHUR: Notifying weyland that terraforming tech was stolen"
+        set_country_flag = MUTHUR_weyland_terraforming_stolen
     }
 
     option = { name = OK }

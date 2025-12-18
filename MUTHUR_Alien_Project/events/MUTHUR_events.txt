@@ -86,15 +86,15 @@ country_event = {
         set_federation_type = trade_federation
         add_cohesion = 250
         add_federation_experience = 10000
-        set_federation_law = centralization_high
+        set_federation_law = centralization_low
         set_federation_law = fleet_contribution_none
-        set_federation_law = succession_type_strongest
-        set_federation_law = succession_power_economy
-        set_federation_law = succession_term_status_change
+        set_federation_law = succession_type_challenge
+        set_federation_law = challenge_type_bidding_war
+        set_federation_law = succession_term_years_10
         set_federation_law = free_migration_yes
         set_federation_law = treaties_separate_no
       }
-      random_country = {
+      every_country = {
         limit = { has_country_flag = MUTHUR_empire_seegson }
         log = "MUTHUR: Adding Seegson to federation"
         join_alliance = {
