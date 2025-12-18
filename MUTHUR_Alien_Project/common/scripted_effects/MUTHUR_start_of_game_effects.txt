@@ -90,6 +90,8 @@ MUTHUR_yutani_home_planet_setup = {
 		zone_slot = 1
 	}
 
+	add_building = building_holo_theatres
+
 	# Shipsets
 	inline_script = "game_start/shipsets"
 
@@ -205,6 +207,8 @@ MUTHUR_seegson_home_planet_setup = {
 		zone = zone_habitat_research_unity
 		zone_slot = 1
 	}
+
+	add_building = building_holo_theatres
 
 	# Shipsets
 	inline_script = "game_start/shipsets"

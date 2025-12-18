@@ -63,7 +63,8 @@ country_event = {
 
         set_global_flag = MUTHUR_weyland_terraforming_push_done
         add_research_option = tech_terrestrial_sculpting
-        add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.50 } # 50% progress
+        #add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.50 } # 50% progress
+        add_tech_progress = { tech = tech_terrestrial_sculpting progress = 0.90 }
         set_country_flag = MUTHUR_weyland_terraforming_push_completed
     }
 
@@ -90,6 +91,9 @@ country_event = {
     immediate = {
         log = "MUTHUR: Seegson/Yutani terraforming project heist"
         set_country_flag = MUTHUR_heists_given
+
+        # Weyland exploration event
+        country_event = { id = MUTHUR.1007 }
 
         # Hand the heist project to Seegson & Yutani if they exist
         every_country = {
@@ -171,6 +175,30 @@ country_event = {
     immediate = {
         log = "MUTHUR: Notifying weyland that terraforming tech was stolen"
         set_country_flag = MUTHUR_weyland_terraforming_stolen
+    }
+
+    option = { name = OK }
+}
+
+# Weyland GJ667 terraforming exploration 
+country_event = {
+    id = MUTHUR.1007
+    title = MUTHUR_gj667_visibility_title
+    desc  = MUTHUR_gj667_visibility_desc
+    picture = GFX_evt_science_breakthrough
+    is_triggered_only = yes
+
+    immediate = {
+        log = "MUTHUR: Weyland gained visibility to GJ667 (MUTHUR_gj667_system)"
+        set_country_flag = MUTHUR_weyland_gj667_revealed
+
+        every_system = {
+            limit = { has_star_flag = MUTHUR_gj667_system_flag }
+            save_event_target_as = gj667_system
+        }
+
+        # Reveal the system on the galaxy map
+        set_visited = event_target:gj667_system
     }
 
     option = { name = OK }

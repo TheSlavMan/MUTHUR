@@ -1,7 +1,8 @@
 special_project = {
 	key = "MUTHUR_WEYLAND_TERRAFORMING_PUSH"
 	icon = "gfx/interface/icons/situation_log/situation_log_engineering.dds"
-	cost = 1000
+	cost = 100
+	#cost = 1000
 	tech_department = engineering_technology
 	picture = GFX_evt_colony_settlement
 	sound = yes
