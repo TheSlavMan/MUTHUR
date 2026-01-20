@@ -1,0 +1,5 @@
+music = {
+	name = "maintheme"
+	file = "MUTHUR_menu.ogg"
+	volume = 0.82
+}
