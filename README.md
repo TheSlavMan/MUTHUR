@@ -4,6 +4,7 @@
 This project aims to unify lore from films, novels, comics, games, and official reference guides into a coherent and playable Stellaris experience.
 
 <img width="605" height="602" alt="image" src="https://github.com/user-attachments/assets/bcc1fcd2-20b7-43e8-b367-d16cadc420db" />
+<img width="1910" height="1069" alt="image" src="https://github.com/user-attachments/assets/271ebcfb-b45b-4903-b0c6-15cdd54233fb" />
 
 
 ## 📖 Project Goals
