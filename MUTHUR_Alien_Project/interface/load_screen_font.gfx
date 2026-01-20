@@ -2,7 +2,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "load_screen"
 		path = "gfx/fonts/cour28"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {

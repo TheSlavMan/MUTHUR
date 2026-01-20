@@ -13,15 +13,6 @@ entity = {
 	
 	default_state = "idle"
 	state = { name = "idle"		animation = "idle" 
-		event = { time = 0 node = "station_interior_lights_1" particle = "frontend_interior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_interior_lights_2" particle = "frontend_interior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_interior_lights_3" particle = "frontend_interior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_interior_lights_4" particle = "frontend_interior_light" keep_particle = yes trigger_once = yes }
-	
-		event = { time = 0 node = "station_exterior_lights_1" particle = "frontend_exterior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_exterior_lights_2" particle = "frontend_exterior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_exterior_lights_3" particle = "frontend_exterior_light" keep_particle = yes trigger_once = yes }
-		event = { time = 0 node = "station_exterior_lights_4" particle = "frontend_exterior_light" keep_particle = yes trigger_once = yes }
 		
 		event = { time = 0 node = "space_locator_1" particle = "frontend_space_dust" keep_particle = yes trigger_once = yes }
 		

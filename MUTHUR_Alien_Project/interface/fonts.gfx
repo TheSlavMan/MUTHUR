@@ -41,19 +41,19 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "standard_font"
 		path = "gfx/fonts/cour20"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont = {
 		name = "null_font"
 		path = "gfx/fonts/cour20"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont = {
 		name = "large_title_font"
 		path = "gfx/fonts/cour36"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {
@@ -98,7 +98,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "large_title_font_28"
 		path = "gfx/fonts/cour28"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {
@@ -142,11 +142,11 @@ bitmapfonts = {
 
 	bitmapfont = {
 		name = "cg_16b"
-		color = 0xffffffff
+		color = 0xff11b852
 		fontfiles = {
 			"gfx/fonts/cour16"
 		}
-		color = 0xffffffff
+		color = 0xff11b852
 		cursor_offset = { -3 -5 }
 		selection_offset = { 0 3 }
 	}
@@ -198,7 +198,7 @@ bitmapfonts = {
 
 	bitmapfont = {
 		name = "jura"
-		color = 0xffffffff
+		color = 0xff11b852
 		fontfiles = {
 			"gfx/fonts/cour36"
 		}
@@ -241,7 +241,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "malgun_goth_24"
 		path = "gfx/fonts/cour20"
-		color = 0xffffffff
+		color = 0xff11b852
 		cursor_offset = { -4 -3 }
 		selection_offset = { 0 1 }
 	}
@@ -289,7 +289,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "map_name_border"
 		path = "gfx/fonts/cour36"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {
@@ -335,7 +335,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "map_name_nebula"
 		path = "gfx/fonts/cour36"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {
@@ -382,7 +382,7 @@ bitmapfonts = {
 	bitmapfont = {
 		name = "map_name_sector"
 		path = "gfx/fonts/cour36"
-		color = 0xffffffff
+		color = 0xff11b852
 	}
 
 	bitmapfont_override = {
