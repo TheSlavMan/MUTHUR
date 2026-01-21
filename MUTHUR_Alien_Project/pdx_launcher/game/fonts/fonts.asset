@@ -1,8 +1,0 @@
-font = {
-	name = "courier"
-	
-	fontstyle = {
-		style = regular
-		file = "gfx/fonts/cour.ttf"
-	}
-}
