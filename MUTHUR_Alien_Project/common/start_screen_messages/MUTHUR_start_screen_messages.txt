@@ -1,0 +1,27 @@
+# Weyland
+part = {
+	location = 0
+	localization = "MUTHUR_START_SCREEN_WEYLAND_ONE"
+
+	trigger = {
+		has_country_flag = MUTHUR_empire_weyland
+	}
+}
+
+part = {
+	location = 1
+	localization = "MUTHUR_START_SCREEN_WEYLAND_TWO"
+
+	trigger = {
+		has_country_flag = MUTHUR_empire_weyland
+	}
+}
+
+part = {
+	location = 2
+	localization = "MUTHUR_START_SCREEN_WEYLAND_THREE"
+
+	trigger = {
+		has_country_flag = MUTHUR_empire_weyland
+	}
+}

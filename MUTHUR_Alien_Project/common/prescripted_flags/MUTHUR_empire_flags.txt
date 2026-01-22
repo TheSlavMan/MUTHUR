@@ -1,11 +1,11 @@
 MUTHUR_weyland_flags = {
-	flags = { MUTHUR_empire_weyland }
+	flags = { MUTHUR_empire_weyland custom_start_screen }
 }
 
 MUTHUR_seegson_flags = {
-	flags = { MUTHUR_empire_seegson }
+	flags = { MUTHUR_empire_seegson custom_start_screen }
 }
 
 MUTHUR_yutani_flags = {
-	flags = { MUTHUR_empire_yutani }
+	flags = { MUTHUR_empire_yutani custom_start_screen }
 }

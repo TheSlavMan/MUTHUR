@@ -1,0 +1,28 @@
+MUTHUR_origin_weyland = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/MUTHUR_origin.dds"
+	picture = MUTHUR_GFX_evt_weyland_origin
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+	}
+
+	random_weight = {
+		base = 0
+	}
+	description = "MUTHUR_origin_tooltip_weyland_effects"
+
+	swap_type = {
+		description = "MUTHUR_origin_tooltip_weyland_effects_lithoid"
+
+		trigger = {
+			exists = this
+			has_trait = trait_lithoid
+		}
+	}
+
+	advanced_start = yes
+}

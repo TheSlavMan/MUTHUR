@@ -26,7 +26,7 @@ MUTHUR_humans_weyland = {
 	authority = "auth_corporate"
 	government = "gov_megacorporation"
 	civics = { "civic_brand_loyalty" "civic_private_prospectors" }
-	origin = "origin_default"
+	origin = "MUTHUR_origin_weyland"
 
 	flag = MUTHUR_weyland_flags
 

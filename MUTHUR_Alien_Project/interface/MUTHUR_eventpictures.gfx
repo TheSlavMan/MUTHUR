@@ -1,0 +1,25 @@
+spriteTypes = {
+	spriteType = {
+		name = "MUTHUR_GFX_evt_weyland_origin"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_origin.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_evt_weyland_origin_nomask"
+		texturefile = "gfx/event_pictures/metropolis.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		parent = "MUTHUR_GFX_evt_weyland_origin_nomask"
+		name = "MUTHUR_GFX_evt_weyland_origin_zoom_1"
+		upper_left = { x = 0 y = 0 }
+		lower_right = { x = 450 y = 150 }
+	}
+	spriteType = {
+		parent = "MUTHUR_GFX_evt_weyland_origin_nomask"
+		name = "MUTHUR_GFX_evt_weyland_origin_zoom_2"
+		upper_left = { x = 117 y = 70 }
+		lower_right = { x = 227 y = 136 }
+	}
+}
