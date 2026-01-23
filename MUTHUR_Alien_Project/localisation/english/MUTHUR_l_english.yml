@@ -167,3 +167,19 @@
   # Ship Names
   MUTHUR_SHIP_Heliades:0 "Heliades NM"
   MUTHUR_SHIP_Prometheus:0 "Prometheus NM"
+
+  # Decisions
+  decision_launch_colonial_marshals:0 "Colonial Marshal's Agreement"
+  decision_launch_colonial_marshals_desc:0 "Upon approval, the Interstellar Commerce Commission will establish a permanent Colonial Marshal office on this world. ICC-certified marshals will assume responsibility for trade security, corporate assets, and high-risk transit hubs, ensuring uninterrupted commercial operations under interstellar jurisdiction."
+  decision_end_colonial_marshals:0 "Revoke Colonial Marshal's Agreement"
+  decision_end_colonial_marshals_desc:0 "If revoked, the ICC's Colonial Marshal presence will be withdrawn from this world. Authority over security and law enforcement will revert to local administration, ending off-world oversight of trade and corporate interests and restoring full planetary autonomy."
+
+  # Decisions Messages
+  decision_launch_colonial_marshals_message:0 "Following an offer from the Interstellar Commerce Commission, a permanent Colonial Marshal office has been established on this world. ICC-certified marshals oversee trade security, corporate assets, and high-risk transit hubs, ensuring that economic activity proceeds without disruption - by force if necessary."
+  decision_end_colonial_marshals_message:0 "The ICC's Colonial Marshal presence has been formally withdrawn from this world. Responsibility for security and law enforcement has been returned to local authorities, ending off-world oversight of trade and corporate interests. While autonomy has increased, so too has exposure to internal and external threats."
+
+
+  # Planet Mofifiers
+  colonial_marshals:0 "Colonial Marshals"
+  colonial_marshals_desc:0 "An ICC-certified Colonial Marshal office operates on this world, enhancing security for trade routes, corporate assets, and critical infrastructure. Interstellar regulations are upheld, contributing to stable commercial activity and improved public order."
+  colonial_marshals_tooltip:4 "Stability: §G+5§\nCrime: §G-15§"

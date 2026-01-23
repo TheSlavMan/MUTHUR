@@ -139,6 +139,30 @@ country_event = {
 	}
 }
 
+country_event = {
+    id = MUTHUR.5005
+    title = decision_launch_colonial_marshals
+    desc = decision_launch_colonial_marshals_message
+    picture = MUTHUR_GFX_colonial_marshals
+    is_triggered_only = yes
+
+    option = {
+        name = OK
+    }
+}
+
+country_event = {
+    id = MUTHUR.5006
+    title = decision_end_colonial_marshals
+    desc = decision_end_colonial_marshals_message
+    picture = MUTHUR_GFX_colonial_marshals
+    is_triggered_only = yes
+
+    option = {
+        name = OK
+    }
+}
+
 
 # ### Engineer Precursor Introduction
 # # Game start: seed the Scotland archaeology site on the capital world

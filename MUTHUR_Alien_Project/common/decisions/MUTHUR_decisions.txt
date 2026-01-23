@@ -1,0 +1,68 @@
+# Colonial Marshal's Agreement
+decision_launch_colonial_marshals = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = colonial_marshals
+
+	resources = {
+		category = decisions
+		cost = {
+			unity = 250
+		}
+	}
+
+	potential = {
+		owner = { 
+            OR = { 
+                has_country_flag = MUTHUR_empire_weyland
+                has_country_flag = MUTHUR_empire_yutani
+                has_country_flag = MUTHUR_empire_seegson 
+            }
+        }
+		NOT = { has_modifier = colonial_marshals }
+	}
+
+	effect = {
+		add_modifier = { modifier = "colonial_marshals" days = -1 }
+		owner = {
+			country_event = { id = MUTHUR.5005 }
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 2
+			planet_crime > 50
+		}
+	}
+}
+
+decision_end_colonial_marshals = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = colonial_marshals
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		has_modifier = colonial_marshals
+	}
+
+	effect = {
+		remove_modifier = colonial_marshals
+		owner = {
+			country_event = { id = MUTHUR.5006 }
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000 #no cost to end it, so may as well do so quickly
+			planet_crime <= 0
+		}
+	}
+}

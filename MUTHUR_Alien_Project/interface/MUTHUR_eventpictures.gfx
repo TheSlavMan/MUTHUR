@@ -22,4 +22,10 @@ spriteTypes = {
 		upper_left = { x = 117 y = 70 }
 		lower_right = { x = 227 y = 136 }
 	}
+	spriteType = {
+		name = "MUTHUR_GFX_colonial_marshals"
+		texturefile = "gfx/event_pictures/MUTHUR_colonial_marshals.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
 }
