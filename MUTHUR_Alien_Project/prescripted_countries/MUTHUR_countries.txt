@@ -14,7 +14,7 @@ MUTHUR_humans_weyland = {
 		name = "Human"
 		plural = "Humans"
 		adjective = "Human"
-		name_list = "HUMAN2"
+		name_list = "MUTHUR_WEYLAND"
 		trait = "trait_adaptive"
 	}
 

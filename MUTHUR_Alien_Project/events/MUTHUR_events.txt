@@ -43,6 +43,16 @@ country_event = {
   is_triggered_only = yes
 
   immediate = {
+
+    # Setup weyland home
+#    if = {
+#      limit = { has_country_flag = MUTHUR_empire_weyland }
+#      log = "MUTHUR: Starting weyland home planet setup"
+#      capital_scope = {
+#        MUTHUR_weyland_home_planet_setup = yes
+#      }
+#    }
+
     # Setup yutani home and establish comms
     if = {
       limit = { has_country_flag = MUTHUR_empire_yutani }
@@ -104,6 +114,29 @@ country_event = {
       }
     }
   }
+}
+
+# Gives science ship design to starter empires
+country_event = {
+  id = MUTHUR.4
+  hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		#science
+		if = {
+			limit = { 
+        OR = { 
+          has_country_flag = MUTHUR_empire_weyland
+          has_country_flag = MUTHUR_empire_yutani
+          has_country_flag = MUTHUR_empire_seegson 
+        } 
+      }
+
+      create_ship_design = { design = "MUTHUR_NAME_Heliades" }
+			add_ship_design = last_created_design
+		}
+	}
 }
 
 

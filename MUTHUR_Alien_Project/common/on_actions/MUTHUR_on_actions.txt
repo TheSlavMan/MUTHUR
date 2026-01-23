@@ -7,6 +7,14 @@ on_game_start_country = {
 		MUTHUR.3
 		# Weyland start project
 		MUTHUR.1000
+		
+	}
+}
+
+#Workaround to create ship design before default ship creation
+empire_init_add_technologies = {
+	events = {
+		MUTHUR.4
 	}
 }
 

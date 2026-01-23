@@ -155,3 +155,15 @@
   MUTHUR_START_SCREEN_WEYLAND_ONE: "Founded in 2012 by the visionary industrialist Peter Weyland, Weyland Corp rose to dominance with unprecedented speed, its vast portfolio of revolutionary patents granting it a market valuation unmatched at birth. By 2015, the corporation had extended its reach beyond Earth, launching Solstice orbital platforms capable of beaming energy across planetary distances."
   MUTHUR_START_SCREEN_WEYLAND_TWO: "In the decades that followed, Weyland Corp blurred the line between public institution and private empire. It financed deep-space scientific endeavors, uncovered microbial life beyond Earth, shattered market records, and decisively crushed all legal challenges to its technological supremacy. Human progress became inseparable from corporate ambition, with shareholders and executives alike guiding the future of the species."
   MUTHUR_START_SCREEN_WEYLAND_THREE: "In the early 2030s, Weyland engineers completed the Heliades - humanity's first faster-than-light capable vessel. With the barriers of interstellar distance finally broken, Weyland Corp now stands poised to export its monopoly beyond Sol, carrying its vision, its authority, and its profits to the stars."
+
+  # Ship Sizes
+  science_weyland:0 "Scientific Exploratory Vessel"
+  science_weyland_plural:0 "Scientific Exploratory Vessels"
+  science_weyland_cap: "$science_weyland$"
+
+  # Generic Ships
+  MUTHUR_NAME_Heliades:0 "Heliades J"
+
+  # Ship Names
+  MUTHUR_SHIP_Heliades:0 "Heliades NM"
+  MUTHUR_SHIP_Prometheus:0 "Prometheus NM"

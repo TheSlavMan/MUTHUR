@@ -1,3 +1,31 @@
+#MUTHUR_weyland_home_planet_setup = {
+#
+#	# not used, alternate ship creation method
+#
+#	optimize_memory
+#	log = "MUTHUR: MUTHUR_weyland_home_planet_setup"
+#	solar_system = {
+#		create_fleet = {
+#			name = "MUTHUR_NAME_Heliades"
+#			effect = {
+#				set_owner = root
+#				create_ship_design = {
+#					design = MUTHUR_NAME_Heliades
+#				}
+#				create_ship = {
+#					name = "MUTHUR_NAME_Heliades"
+#					design = last_created_design
+#				}
+#				set_location = {
+#					target = root.capital_scope
+#					distance = 10
+#					angle = random
+#				}
+#			}
+#		}
+#	}
+#}
+
 MUTHUR_yutani_home_planet_setup = {
 	optimize_memory
 	log = "MUTHUR: MUTHUR_yutani_home_planet_setup"
