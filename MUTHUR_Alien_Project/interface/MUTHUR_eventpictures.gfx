@@ -28,4 +28,52 @@ spriteTypes = {
 		masking_texture = "gfx/interface/situation_log/event_mask.dds"
 		alwaystransparent = yes
 	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_terraforming"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_terraforming.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_terraforming_push"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_terraforming_push.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_terraforming_mars"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_terraforming_mars.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_terminal"
+		texturefile = "gfx/event_pictures/MUTHUR_terminal.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_terminal_science"
+		texturefile = "gfx/event_pictures/MUTHUR_terminal_science.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_warehouse"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_warehouse.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_relay"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_relay.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "MUTHUR_GFX_weyland_scientist"
+		texturefile = "gfx/event_pictures/MUTHUR_weyland_scientist.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
 }
